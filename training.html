@@ -3,43 +3,298 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Training & Certifications · Julio Gulias</title>
+  <title>Training & Certifications | Julio Gulias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ── Tokens ── */
     :root {
-      --navy:#0F1B2D;--navy-mid:#182740;--navy-card:#1C3050;--steel:#4A6580;
-      --teal:#00C4B3;--amber:#F59E0B;--off-white:#F0EDE6;--muted:#8FA3B8;--white:#FFFFFF;
-      --font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;
+      --navy:      #0F1B2D;
+      --navy-mid:  #142942;
+      --navy-card: #1C3050;
+      --steel:     #4A6580;
+      --teal:      #00C4B3;
+      --off-white: #F0EDE6;
+      --muted:     #8FA3B8;
+      --white:     #FFFFFF;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --font-serif:   'Playfair Display', Georgia, serif;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--navy);color:var(--off-white);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
-    .site-header{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 36px;background:rgba(13,29,47,0.94);border-bottom:1px solid rgba(0,210,190,0.12);backdrop-filter:blur(10px)}
-    .brand{text-decoration:none;color:var(--white);display:flex;flex-direction:column;line-height:1.1}
-    .brand-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700}
-    .brand-subtitle{margin-top:4px;font-size:0.8rem;color:var(--steel)}
-    .main-nav{display:flex;align-items:center;gap:32px}
-    .main-nav a,.nav-dropdown-toggle{color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;font-size:0.78rem;font-weight:700;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;transition:color 0.2s}
-    .main-nav a:hover,.nav-dropdown-toggle:hover{color:var(--teal)}
-    .main-nav a.active{color:var(--teal)}
-    .nav-dropdown{position:relative}
-    .nav-dropdown-menu{display:none;position:absolute;top:32px;right:0;min-width:220px;padding:14px;background:#142942;border:1px solid rgba(0,196,179,0.25);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,0.25)}
-    .nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;font-size:0.75rem;font-weight:700;color:var(--muted);white-space:nowrap}
-    .nav-dropdown-menu a:hover{background:rgba(0,196,179,0.08);color:var(--teal)}
-    .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:block}
-    @media(max-width:768px){.main-nav{display:none}}
-    .page-header{padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto}
-    .page-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem}
-    .page-header h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:1rem}
-    .coming-soon{max-width:1100px;margin:0 auto;padding:0 2rem 6rem;display:flex;align-items:center;gap:1rem;color:var(--muted);font-size:0.95rem}
-    .coming-soon-pill{background:rgba(0,196,179,0.1);border:1px solid rgba(0,196,179,0.3);color:var(--teal);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:20px}
-    footer{background:var(--navy);padding:1.5rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
-    footer p{font-size:0.75rem;color:var(--steel)}
-    footer a{color:var(--teal);text-decoration:none}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header & Nav ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 36px;
+      background: rgba(13,29,47,0.94);
+      border-bottom: 1px solid rgba(0,210,190,0.12);
+      backdrop-filter: blur(10px);
+    }
+    .brand { text-decoration: none; color: var(--white); display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; }
+    .brand-subtitle { margin-top: 4px; font-size: 0.8rem; color: var(--steel); }
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav a, .nav-dropdown-toggle {
+      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 700;
+      background: none; border: 0; cursor: pointer; font-family: inherit;
+      padding: 0; transition: color 0.2s;
+    }
+    .main-nav a:hover, .nav-dropdown-toggle:hover { color: var(--teal); }
+    .main-nav a.active, .nav-dropdown-toggle.active { color: var(--teal); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 32px; right: 0;
+      min-width: 220px; padding: 14px; background: #142942;
+      border: 1px solid rgba(0,196,179,0.25); border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 10px 14px; border-radius: 6px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 0.75rem; font-weight: 700; color: var(--muted); white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(0,196,179,0.08); color: var(--teal); }
+    .nav-dropdown-menu a.active { color: var(--teal); }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+    @media (max-width: 768px) { .main-nav { display: none; } }
+
+    /* ── Shared kicker style ── */
+    .page-kicker, .section-kicker {
+      color: #10cfc0;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .page-kicker::after, .section-kicker::after {
+      content: "";
+      display: block;
+      width: 52px;
+      height: 2px;
+      margin-top: 16px;
+      background: #10cfc0;
+    }
+    .accent-dot { color: #10cfc0; }
+
+    /* ================================
+       Training & Certifications Page
+    ================================ */
+
+    .training-hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 96px 32px 48px;
+    }
+    .training-hero h1 {
+      max-width: 760px;
+      margin: 0 0 28px;
+      font-family: var(--font-serif);
+      font-size: clamp(3.2rem, 7vw, 6.2rem);
+      line-height: 0.95;
+      color: #ffffff;
+    }
+    .training-hero p {
+      max-width: 620px;
+      margin: 0;
+      color: #9fb8d3;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    .training-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 32px 40px;
+    }
+
+    .credential-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .credential-card,
+    .development-card,
+    .education-list,
+    .linkedin-training-cta {
+      border: 1px solid rgba(159,184,211,0.18);
+      background: rgba(24,48,77,0.42);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.16);
+    }
+
+    .credential-card {
+      border-radius: 12px;
+      padding: 24px;
+      min-height: 310px;
+      display: flex;
+      flex-direction: column;
+    }
+    .credential-header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .credential-logo {
+      width: 56px; height: 56px; flex: 0 0 56px;
+      border-radius: 8px;
+      display: grid; place-items: center;
+      background: #ffffff;
+      color: #061724;
+      font-size: 0.72rem; font-weight: 900; letter-spacing: 0.03em;
+    }
+    .credential-card h2 {
+      margin: 0 0 6px; color: #ffffff;
+      font-size: 1.05rem; line-height: 1.35;
+    }
+    .credential-card > .credential-header > div > p {
+      margin: 0; color: #10cfc0;
+      font-size: 0.9rem; line-height: 1.45;
+    }
+    .credential-meta {
+      list-style: none; padding: 0 0 20px;
+      margin: 0 0 20px;
+      border-bottom: 1px solid rgba(159,184,211,0.22);
+    }
+    .credential-meta li {
+      color: #9fb8d3; font-size: 0.9rem; margin-bottom: 8px;
+    }
+    .credential-meta li::before {
+      content: "▣"; color: #10cfc0;
+      font-size: 0.7rem; margin-right: 10px;
+    }
+    .credential-card .credential-skills {
+      margin-top: auto; color: #d6e4f2;
+      font-size: 0.9rem; line-height: 1.55;
+    }
+    .credential-skills strong, .education-skills strong { color: #ffffff; }
+
+    .education-list { border-radius: 12px; overflow: hidden; }
+    .education-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 24px; align-items: center; padding: 26px;
+    }
+    .education-item + .education-item {
+      border-top: 1px solid rgba(159,184,211,0.16);
+    }
+    .education-logo {
+      width: 64px; height: 64px; border-radius: 8px;
+      display: grid; place-items: center;
+      background: #174ce3; color: #ffffff;
+      font-weight: 800; font-size: 0.9rem;
+    }
+    .education-logo.muted { background: rgba(255,255,255,0.9); color: #061724; }
+    .education-content h2 { margin: 0 0 6px; color: #ffffff; font-size: 1.1rem; }
+    .education-content p { margin: 0 0 8px; color: #10cfc0; line-height: 1.5; }
+    .education-content .education-skills {
+      color: #d6e4f2; font-size: 0.9rem; margin-bottom: 0;
+    }
+    .education-date {
+      color: #9fb8d3; font-size: 0.9rem;
+      text-align: right; line-height: 1.45; white-space: nowrap;
+    }
+
+    .development-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .development-card {
+      border-radius: 12px; padding: 28px;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 22px; align-items: start;
+    }
+    .development-icon {
+      width: 58px; height: 58px;
+      border: 1px solid #10cfc0; color: #10cfc0;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 1.5rem;
+    }
+    .development-card h2 {
+      margin: 0 0 14px; color: #ffffff;
+      font-size: 1.25rem; line-height: 1.35;
+    }
+    .development-card ul {
+      margin: 0; padding-left: 18px;
+      color: #d6e4f2; line-height: 1.65;
+    }
+    .development-card li::marker { color: #10cfc0; }
+
+    .linkedin-training-cta {
+      max-width: 1180px;
+      margin: 0 auto 32px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 24px; align-items: center;
+      border-radius: 14px;
+    }
+    .linkedin-cta-icon {
+      width: 72px; height: 72px;
+      border: 1px solid #10cfc0; border-radius: 50%;
+      display: grid; place-items: center;
+      color: #10cfc0; font-size: 2rem;
+    }
+    .linkedin-training-cta h2 { margin: 0 0 8px; color: #ffffff; font-size: 1.35rem; }
+    .linkedin-training-cta p { margin: 0; color: #9fb8d3; line-height: 1.6; }
+
+    .secondary-button {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 12px; text-decoration: none; border-radius: 8px;
+      font-weight: 800; letter-spacing: 0.01em;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      padding: 18px 22px;
+      color: #061724; background: #10cfc0;
+      white-space: nowrap;
+    }
+    .secondary-button:hover { transform: translateY(-2px); }
+
+    /* ── Footer ── */
+    .site-footer {
+      max-width: 1180px; margin: 0 auto;
+      padding: 32px;
+      border-top: 1px solid rgba(159,184,211,0.14);
+      color: #7190af; text-align: center;
+    }
+
+    /* ================================
+       Training Page Responsive
+    ================================ */
+    @media (max-width: 1100px) {
+      .credential-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 780px) {
+      .training-hero { padding: 72px 22px 36px; }
+      .training-section { padding: 20px 22px 32px; }
+      .credential-grid, .development-grid { grid-template-columns: 1fr; }
+      .education-item { grid-template-columns: 1fr; gap: 14px; }
+      .education-date { text-align: left; }
+      .development-card { grid-template-columns: 1fr; }
+      .linkedin-training-cta { margin: 0 22px 32px; padding: 24px; grid-template-columns: 1fr; }
+      .linkedin-training-cta .secondary-button { width: 100%; }
+    }
   </style>
 </head>
 <body>
+
 <header class="site-header">
   <a class="brand" href="index.html#home">
     <span class="brand-name">Julio Gulias</span>
@@ -52,7 +307,9 @@
     <a href="index.html#about">About</a>
     <a href="recommendations.html">Recommendations</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-toggle" type="button" style="color:var(--teal);">More <span aria-hidden="true">▾</span></button>
+      <button class="nav-dropdown-toggle active" type="button">
+        More <span aria-hidden="true">▾</span>
+      </button>
       <div class="nav-dropdown-menu">
         <a href="training.html" class="active">Training &amp; Certifications</a>
         <a href="articles.html">Articles</a>
@@ -62,14 +319,189 @@
     <a href="index.html#contact">Contact</a>
   </nav>
 </header>
-<div class="page-header">
-  <div class="page-eyebrow">Learning & Development</div>
-  <h1>Training &amp; Certifications</h1>
-</div>
-<div class="coming-soon">
-  <span class="coming-soon-pill">Coming soon</span>
-  <span>Content for this section is being prepared and will be published shortly.</span>
-</div>
-<footer><p><a href="index.html">← Back to main page</a> &nbsp;·&nbsp; © 2026 Julio Gulias</p></footer>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="training-hero">
+    <div class="page-kicker">Training &amp; Certifications</div>
+    <h1>Learning that builds better outcomes<span class="accent-dot">.</span></h1>
+    <p>Formal credentials and continuous learning that support my work in project delivery, agile teams, professional services, and people leadership.</p>
+  </section>
+
+  <!-- ── Featured Credentials ── -->
+  <section class="training-section">
+    <div class="section-kicker">Featured Credentials</div>
+    <div class="credential-grid">
+
+      <article class="credential-card">
+        <div class="credential-header">
+          <div class="credential-logo">PMI</div>
+          <div>
+            <h2>Project Management Professional — PMP</h2>
+            <p>Project Management Institute</p>
+          </div>
+        </div>
+        <ul class="credential-meta">
+          <li>Issued Jun 2013</li>
+          <li>Expires Jun 2028</li>
+          <li>Credential ID #1625866</li>
+        </ul>
+        <p class="credential-skills"><strong>Skills:</strong> Stakeholder Engagement, Agile Methodologies, Risk Management, Project Delivery</p>
+      </article>
+
+      <article class="credential-card">
+        <div class="credential-header">
+          <div class="credential-logo">PSM</div>
+          <div>
+            <h2>Professional Scrum Master I — PSM I</h2>
+            <p>Scrum.org</p>
+          </div>
+        </div>
+        <ul class="credential-meta">
+          <li>Issued Jun 2018</li>
+        </ul>
+        <p class="credential-skills"><strong>Skills:</strong> Scrum, Agile Delivery, Team Leadership, Product Delivery</p>
+      </article>
+
+      <article class="credential-card">
+        <div class="credential-header">
+          <div class="credential-logo">UofA</div>
+          <div>
+            <h2>Software Product Management Specialization</h2>
+            <p>University of Alberta</p>
+          </div>
+        </div>
+        <ul class="credential-meta">
+          <li>2020 – 2021</li>
+        </ul>
+        <p class="credential-skills"><strong>Skills:</strong> Product Management, SDLC, Requirements, Planning, Agile Practices</p>
+      </article>
+
+      <article class="credential-card">
+        <div class="credential-header">
+          <div class="credential-logo">IAC</div>
+          <div>
+            <h2>Transformational Coach — CTC</h2>
+            <p>International Association of Coaching</p>
+          </div>
+        </div>
+        <ul class="credential-meta">
+          <li>Issued Oct 2016</li>
+        </ul>
+        <p class="credential-skills"><strong>Skills:</strong> Coaching, Team Leadership, Communication, People Development</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Formal Education ── -->
+  <section class="training-section">
+    <div class="section-kicker">Formal Education</div>
+    <div class="education-list">
+
+      <article class="education-item">
+        <div class="education-logo">PUCRS</div>
+        <div class="education-content">
+          <h2>Pontifícia Universidade Católica do Rio Grande do Sul — PUCRS</h2>
+          <p>Bachelor of Engineering — Electronic Engineering</p>
+          <p class="education-skills"><strong>Skills:</strong> Software Development Life Cycle, Project Delivery, Systems Engineering</p>
+        </div>
+        <div class="education-date">Completed<br />2000 – 2004</div>
+      </article>
+
+      <article class="education-item">
+        <div class="education-logo muted">PA</div>
+        <div class="education-content">
+          <h2>Protasio Alves College</h2>
+          <p>Technical — Accounting</p>
+          <p class="education-skills"><strong>Skills:</strong> Accounting Principles, Financial Management, Business Operations</p>
+        </div>
+        <div class="education-date">Completed<br />1996 – 1998</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Professional Development ── -->
+  <section class="training-section">
+    <div class="section-kicker">Selected Professional Development</div>
+    <div class="development-grid">
+
+      <article class="development-card">
+        <div class="development-icon">⌁</div>
+        <div>
+          <h2>Agile Delivery &amp; Product Practices</h2>
+          <ul>
+            <li>Agile Coach Professional — Adaptworks</li>
+            <li>Agile Project Management with Scrum — PMTech</li>
+            <li>Agile Requirements — Adaptworks</li>
+            <li>Learning Shot: The Role of Scrum Master after 20 Years of Scrum — Adaptworks</li>
+            <li>Management 3.0 — Adaptworks</li>
+            <li>Leading SAFe 4.0 Course — Adaptworks</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="development-card">
+        <div class="development-icon">◎</div>
+        <div>
+          <h2>Leadership, Communication &amp; Team Development</h2>
+          <ul>
+            <li>Giftwork — Training for Managers</li>
+            <li>Habitudes — Leading Young People for Leadership</li>
+            <li>Individual Differences and Feedback — GrowUp Ciência em Gestão</li>
+            <li>Interview Techniques for Managers — ABRH-RS</li>
+            <li>Leader Communicator — ABRH-RS</li>
+            <li>Career Direct — YES! Youth Exploration Survey</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="development-card">
+        <div class="development-icon">⚙</div>
+        <div>
+          <h2>Process, Operations &amp; Readiness</h2>
+          <ul>
+            <li>Process Modelling with BPMN</li>
+            <li>Incident Command / Incident Management System Level 1</li>
+            <li>Emergency First Aid for Industry — OFA Level 1 Equivalent</li>
+            <li>Fire Safety Training — Firefighter School, RS</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="development-card">
+        <div class="development-icon">✦</div>
+        <div>
+          <h2>Business &amp; Creative Management</h2>
+          <ul>
+            <li>Creative Project Management: Methodology and Process — PUCRS</li>
+            <li>Relationship with the Market — USEN / Sebrae Business University</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── LinkedIn CTA ── -->
+  <section class="linkedin-training-cta">
+    <div class="linkedin-cta-icon">◎</div>
+    <div>
+      <h2>Curious to see more?</h2>
+      <p>You can view my full education history, certifications, and completed courses on LinkedIn.</p>
+    </div>
+    <a class="secondary-button" href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener noreferrer">
+      View full on LinkedIn <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Julio Gulias · Built with plain HTML · Hosted on GitHub Pages</p>
+</footer>
+
 </body>
 </html>
