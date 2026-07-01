@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roles · Julio Gulias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Token System (matches index.html / recommendations.html) ── */
+    :root {
+      --navy:      #0F1B2D;
+      --navy-mid:  #182740;
+      --navy-card: #1C3050;
+      --steel:     #4A6580;
+      --teal:      #00C4B3;
+      --teal-dim:  rgba(0,196,179,0.12);
+      --amber:     #F59E0B;
+      --off-white: #F0EDE6;
+      --muted:     #8FA3B8;
+      --white:     #FFFFFF;
+      --radius:    6px;
+      --max:       1100px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header & Nav ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 36px;
+      background: rgba(13,29,47,0.94);
+      border-bottom: 1px solid rgba(0,210,190,0.12);
+      backdrop-filter: blur(10px);
+    }
+    .brand {
+      text-decoration: none;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .brand-subtitle {
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .main-nav a,
+    .nav-dropdown-toggle {
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+    }
+    .main-nav a:hover,
+    .nav-dropdown-toggle:hover { color: var(--teal); }
+    .main-nav a.active { color: var(--teal); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 32px;
+      right: 0;
+      min-width: 220px;
+      padding: 14px;
+      background: #142942;
+      border: 1px solid rgba(0,196,179,0.25);
+      border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover {
+      background: rgba(0,196,179,0.08);
+      color: var(--teal);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+
+    /* ── Page Header ── */
+    .page-header {
+      padding: 4rem 2rem 3rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .page-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.75;
+    }
+
+    /* ── Company nav tabs ── */
+    .company-tabs {
+      position: sticky;
+      top: 60px;
+      z-index: 90;
+      background: rgba(15,27,45,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0,196,179,0.1);
+      padding: 0 2rem;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .company-tabs::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      padding: 0.9rem 1.25rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn:hover { color: var(--off-white); }
+    .tab-btn.active { color: var(--teal); border-bottom-color: var(--teal); }
+    .tab-year { font-size: 0.65rem; color: var(--steel); }
+    .tab-btn.active .tab-year { color: var(--teal); opacity: 0.7; }
+
+    /* ── Main ── */
+    main { max-width: var(--max); margin: 0 auto; padding: 3rem 2rem 6rem; }
+
+    /* ── Company Section ── */
+    .role-section {
+      margin-bottom: 6rem;
+      scroll-margin-top: 120px;
+    }
+    .role-section:last-child { margin-bottom: 0; }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+    .role-title-block {}
+    .role-company {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
+    }
+    .role-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--amber);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.3rem;
+    }
+    .role-meta {
+      font-size: 0.82rem;
+      color: var(--steel);
+    }
+    .role-years {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .role-years .range {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.2;
+    }
+    .role-years .duration {
+      font-size: 0.75rem;
+      color: var(--steel);
+    }
+
+    .role-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 760px;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Metrics strip ── */
+    .metrics-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--navy-card);
+      border: 1px solid rgba(0,196,179,0.12);
+      border-radius: 8px;
+      margin-bottom: 2.5rem;
+    }
+    .metric { display: flex; flex-direction: column; }
+    .metric-num {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+    }
+    .metric-label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Sub-heading ── */
+    .sub-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+      margin-top: 2.5rem;
+    }
+    .sub-label:first-of-type { margin-top: 0; }
+
+    /* ── Project cards ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: rgba(0,196,179,0.3); transform: translateY(-2px); }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.2rem;
+    }
+    .project-dates {
+      font-size: 0.72rem;
+      color: var(--steel);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+    .project-body {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .project-body strong { color: var(--off-white); font-weight: 500; }
+
+    /* ── Reflection pull-quote ── */
+    .reflection {
+      position: relative;
+      background: linear-gradient(135deg, #1C3050 0%, #162640 100%);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 8px 8px 0;
+      padding: 2rem 2.25rem;
+      margin-top: 2rem;
+    }
+    .reflection-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.8rem;
+    }
+    .reflection p {
+      font-size: 1rem;
+      color: var(--off-white);
+      line-height: 1.85;
+      font-style: italic;
+      max-width: 760px;
+    }
+    .reflection p + p { margin-top: 1rem; }
+
+    /* ── Client table ── */
+    .client-table-wrap { overflow-x: auto; margin-top: 0.5rem; }
+    .client-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      min-width: 480px;
+    }
+    .client-table th {
+      text-align: left;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--teal);
+      padding: 0.6rem 0.9rem;
+      border-bottom: 1px solid rgba(0,196,179,0.2);
+    }
+    .client-table td {
+      padding: 0.65rem 0.9rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .client-table tr:hover td { color: var(--off-white); }
+    .f500-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--amber);
+      background: rgba(245,158,11,0.1);
+      border: 1px solid rgba(245,158,11,0.25);
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+    }
+
+    /* ── PSI pill list (BCNET) ── */
+    .pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .pill {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* ── Award badge ── */
+    .award-row { display: flex; flex-direction: column; gap: 1rem; margin-top: 0.5rem; }
+    .award-card {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      background: var(--navy-card);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+    }
+    .award-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
+    .award-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--amber);
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    .award-issuer { font-size: 0.75rem; color: var(--steel); margin-bottom: 0.5rem; }
+    .award-quote { font-size: 0.85rem; color: var(--muted); font-style: italic; line-height: 1.65; }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,196,179,0.15), transparent);
+      margin: 4rem 0;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+    /* ── Footer ── */
+    footer { background: var(--navy); padding: 1.5rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
+    footer p { font-size: 0.75rem; color: var(--steel); }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .role-header { flex-direction: column; }
+      .role-years { text-align: left; }
+      .metrics-strip { gap: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER / NAV ── -->
+<header class="site-header">
+  <a class="brand" href="index.html#home">
+    <span class="brand-name">Julio Gulias</span>
+    <span class="brand-subtitle">Project &amp; Delivery Leadership</span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#strengths">Strengths</a>
+    <a href="index.html#about">About</a>
+    <a href="recommendations.html">Recommendations</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle" type="button" style="color:var(--teal);">
+        More <span aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="training.html">Training &amp; Certifications</a>
+        <a href="articles.html">Articles</a>
+        <a href="volunteering.html">Volunteering</a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ── PAGE HEADER ── -->
+<div class="page-header">
+  <div class="page-eyebrow">Career Deep-Dive</div>
+  <h1>15 years, five companies,<br>one throughline</h1>
+  <p>The career timeline on the homepage is the summary. This page is the detail behind it — the scope of each role, the projects that defined it, and what each chapter taught me. Jump to any company below.</p>
+</div>
+
+<!-- ── COMPANY TABS ── -->
+<div class="company-tabs" id="tabs">
+  <button class="tab-btn active" onclick="scrollToSection('backbone')">Backbone <span class="tab-year">2024–26</span></button>
+  <button class="tab-btn" onclick="scrollToSection('liferay')">Liferay <span class="tab-year">2022–23</span></button>
+  <button class="tab-btn" onclick="scrollToSection('bcnet')">BCNET <span class="tab-year">2020–22</span></button>
+  <button class="tab-btn" onclick="scrollToSection('dell')">Dell <span class="tab-year">2014–18</span></button>
+  <button class="tab-btn" onclick="scrollToSection('hp')">Hewlett-Packard <span class="tab-year">2011–14</span></button>
+</div>
+
+<main>
+
+  <!-- ════════════════════════════════
+       BACKBONE
+  ════════════════════════════════ -->
+  <section class="role-section" id="backbone">
+    <div class="role-header">
+      <div class="role-title-block">
+        <div class="role-company">Backbone</div>
+        <div class="role-title">Head of Professional Services — North America &amp; Brazil</div>
+        <div class="role-meta">Burnaby, BC, Canada · Remote · Contract, part-time</div>
+      </div>
+      <div class="role-years">
+        <div class="range">Oct 2024 – Mar 2026</div>
+        <div class="duration">1 yr 5 mos</div>
+      </div>
+    </div>
+
+    <p class="role-intro">Backbone is a digital delivery and services organization supporting complex web and platform initiatives across multiple clients and regions. When I joined, I wasn't starting from zero — Liferay had already expanded my career into Professional Services. But Backbone took that further: a smaller, talent-dense, growth-stage company where I stepped beyond delivering individual projects into helping shape how the entire services function operated.</p>
+
+    <div class="metrics-strip">
+      <div class="metric"><span class="metric-num">5+</span><span class="metric-label">Concurrent Client Accounts</span></div>
+      <div class="metric"><span class="metric-num">14</span><span class="metric-label">Operating Practices Introduced</span></div>
+      <div class="metric"><span class="metric-num">2</span><span class="metric-label">Regions Led (NA &amp; Brazil)</span></div>
+    </div>
+
+    <div class="sub-label">What I Owned</div>
+    <p class="project-body" style="max-width:760px; margin-bottom: 0.5rem;">I owned delivery health across multiple client accounts — schedule, scope, quality, risk, and commercial outcomes — while building the operating rhythms that didn't yet exist: status reporting, governance, escalation paths, and delivery artifacts. I managed capacity planning across distributed teams and time zones, drove change-control discipline to prevent silent scope creep, and partnered with Sales and Leadership on SOW and change-order inputs to keep execution aligned to what was actually agreed.</p>
+
+    <div class="sub-label">Key Engagements</div>
+    <div class="client-table-wrap">
+      <table class="client-table">
+        <thead>
+          <tr><th>Client / Program</th><th>Type</th><th>Primary Focus</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Longo's</td><td>Implementation + Support</td><td>Re-platform, enhancements, integrations — governance, scope control, UAT readiness</td></tr>
+          <tr><td>JA Studio</td><td>Enhancements</td><td>Pricing, discovery resets, backlog shaping</td></tr>
+          <tr><td>U-Pave</td><td>New build</td><td>Website build + templates, dependency management</td></tr>
+          <tr><td>Xia</td><td>Product / MVP</td><td>MVP backlog, FE/BE alignment, path-to-production</td></tr>
+          <tr><td>FNHA</td><td>Pre-sales / RFP / PoC</td><td>Compliance + PoC definition, validation checkpoints</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-label">What I Built</div>
+    <p class="project-body" style="max-width:760px;">Beyond day-to-day delivery, I introduced a standardized PS operating model so quality didn't depend on each PM's individual style: structured risk governance, a weekly status reporting cadence, scope/change-control discipline, backlog governance, recurring profitability reviews, and formal UAT/client sign-off checkpoints. The goal throughout was to move Professional Services from a personal-knowledge-driven model to a scalable, repeatable one — without burying a lean, entrepreneurial team in process for its own sake.</p>
+
+    <div class="reflection">
+      <div class="reflection-label">Reflection</div>
+      <p>This chapter tested and confirmed who I'd become professionally. It showed me I can lead in ambiguity, build structure where little exists, and keep people aligned even when the environment is under pressure — that I'm not only someone who manages projects well, but someone who can help an organization mature the way it delivers services.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       LIFERAY
+  ════════════════════════════════ -->
+  <section class="role-section" id="liferay">
+    <div class="role-header">
+      <div class="role-title-block">
+        <div class="role-company">Liferay</div>
+        <div class="role-title">Engagement Manager — Professional Services</div>
+        <div class="role-meta">Remote, for Diamond Bar, CA, USA · Full-time</div>
+      </div>
+      <div class="role-years">
+        <div class="range">Oct 2022 – Dec 2023</div>
+        <div class="duration">1 yr 3 mos</div>
+      </div>
+    </div>
+
+    <p class="role-intro">Liferay is a global B2B enterprise software company known for its open-source Digital Experience Platform (DXP) and Liferay Experience Cloud (LXC), serving clients like Airbus, US Bank, Honda, and Desjardins across Europe, the Americas, the Middle East, Asia, and Africa.</p>
+
+    <div class="metrics-strip">
+      <div class="metric"><span class="metric-num">14</span><span class="metric-label">Professional Services Projects</span></div>
+      <div class="metric"><span class="metric-num">3</span><span class="metric-label">Fortune 500 Clients</span></div>
+      <div class="metric"><span class="metric-num">3</span><span class="metric-label">Countries Served (US, CA, Caribbean)</span></div>
+    </div>
+
+    <div class="sub-label">What I Owned</div>
+    <p class="project-body" style="max-width:760px; margin-bottom: 0.5rem;">I managed and executed 14 professional services projects for Fortune 500–caliber organizations, owning customer satisfaction through seamless execution, risk management, and delivery quality against agreed commercial terms. I worked cross-functionally with Sales and Legal to draft Statements of Work during the proposal process, assembled and oversaw delivery teams including subcontractors, and partnered with Customer Success Managers to advocate for client interests and drive engagement.</p>
+
+    <div class="sub-label">Selected Clients</div>
+    <div class="client-table-wrap">
+      <table class="client-table">
+        <thead>
+          <tr><th>Client</th><th>Package</th><th>Sector</th><th>Fortune 500 Rank</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>CNO Financial Group</td><td>Upgrade Accelerator</td><td>Finance</td><td><span class="f500-badge">#540</span></td></tr>
+          <tr><td>Quest Diagnostics</td><td>Implementation</td><td>Health Care</td><td><span class="f500-badge">#303</span></td></tr>
+          <tr><td>US Bank</td><td>SME</td><td>Financial</td><td><span class="f500-badge">#150</span></td></tr>
+          <tr><td>Harman International</td><td>Discovery</td><td>Technology</td><td>—</td></tr>
+          <tr><td>Stanford University</td><td>SME</td><td>Educational</td><td>—</td></tr>
+          <tr><td>Ontario Pension Board</td><td>SME</td><td>Public Sector</td><td>—</td></tr>
+          <tr><td>Fujitsu Caribbean</td><td>SME</td><td>Technology</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sub-label">How I Worked</div>
+    <p class="project-body" style="max-width:760px;">I facilitated customer onboarding using a risk-first approach that prevented project delays and optimized consultant utilization, conducted regular account reviews to surface improvement opportunities, and focused heavily on team collaboration — sharing best practices, tools, and analytics across the engagement-management team to raise delivery quality consistently rather than project by project.</p>
+
+    <div class="reflection">
+      <div class="reflection-label">Reflection</div>
+      <p>Liferay's commitment to making technology useful — and investing in the communities it serves — resonated with me deeply. The freedom to focus on what brought the most value to customers, rather than just hitting a checklist, honed my skills in customer relationship management and gave me a real appreciation for how project management drives organizational growth, not just delivery.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       BCNET
+  ════════════════════════════════ -->
+  <section class="role-section" id="bcnet">
+    <div class="role-header">
+      <div class="role-title-block">
+        <div class="role-company">BCNET</div>
+        <div class="role-title">Project Manager — Network Infrastructure &amp; Cybersecurity</div>
+        <div class="role-meta">Vancouver, BC, Canada · Hybrid · Full-time, 2-year contract</div>
+      </div>
+      <div class="role-years">
+        <div class="range">May 2020 – May 2022</div>
+        <div class="duration">2 yrs</div>
+      </div>
+    </div>
+
+    <p class="role-intro">BCNET is a public, not-for-profit organization providing high-performance networking and cybersecurity services tailored to British Columbia's higher education and research institutions — a collaborative environment supporting world-class research and education through shared infrastructure.</p>
+
+    <div class="metrics-strip">
+      <div class="metric"><span class="metric-num">79</span><span class="metric-label">Projects Delivered</span></div>
+      <div class="metric"><span class="metric-num">38</span><span class="metric-label">Max Concurrent Initiatives</span></div>
+      <div class="metric"><span class="metric-num">20</span><span class="metric-label">Campuses Connected</span></div>
+    </div>
+
+    <div class="sub-label">What I Owned</div>
+    <p class="project-body" style="max-width:760px; margin-bottom: 0.5rem;">I led a portfolio of 79 network and cybersecurity projects — managing up to 38 active initiatives at once — consistently on time and within budget. I coordinated infrastructure work to install redundant connections across 20 post-secondary campuses, integrating them into BCNET's high-speed network, and spearheaded the rollout of Arbor Sightline and Cisco Crosswork Network Insights for DDoS detection and mitigation.</p>
+
+    <div class="sub-label">Campuses Connected</div>
+    <div class="pill-list">
+      <span class="pill">UBC</span>
+      <span class="pill">SFU</span>
+      <span class="pill">UVic</span>
+      <span class="pill">KPU</span>
+      <span class="pill">Douglas College</span>
+      <span class="pill">Langara College</span>
+      <span class="pill">Camosun College</span>
+      <span class="pill">UFV</span>
+      <span class="pill">UNBC</span>
+      <span class="pill">NLC</span>
+      <span class="pill">JIBC</span>
+      <span class="pill">FDU</span>
+    </div>
+
+    <div class="sub-label" style="margin-top:2.5rem;">What I Built</div>
+    <p class="project-body" style="max-width:760px;">I fostered a project management culture within the Technology Department by applying Change Management principles, which improved planning, tracking, and reporting across the board. I also led the migration from on-premise Jira to SaaS TeamDynamix, strengthening project data integrity, and developed comprehensive documentation — charters, schedules, requirements — so stakeholder alignment didn't depend on tribal knowledge.</p>
+
+    <div class="reflection">
+      <div class="reflection-label">Reflection</div>
+      <p>BCNET let me leverage project management, communication, and technical expertise to drive real improvements in network infrastructure and cybersecurity for institutions doing world-class research and education. The collaborative spirit and dedication to excellence there gave me the right environment to grow from a software-delivery PM into one who could operate fluently in infrastructure and security.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       DELL
+  ════════════════════════════════ -->
+  <section class="role-section" id="dell">
+    <div class="role-header">
+      <div class="role-title-block">
+        <div class="role-company">Dell Technologies</div>
+        <div class="role-title">Senior Project Manager — Software Development</div>
+        <div class="role-meta">Porto Alegre, RS, Brazil · On-site · Full-time (via Eldorado Research Institute)</div>
+      </div>
+      <div class="role-years">
+        <div class="range">Apr 2014 – Mar 2018</div>
+        <div class="duration">4 yrs</div>
+      </div>
+    </div>
+
+    <p class="role-intro">Dell Technologies designs, develops, and sells personal computers, servers, storage, networking, software, and peripherals globally. I led software development projects contributing directly to Dell's global e-commerce expansion, working alongside teams across the USA, Brazil, India, and Ireland.</p>
+
+    <div class="metrics-strip">
+      <div class="metric"><span class="metric-num">20,000+</span><span class="metric-label">Customer Stores Migrated</span></div>
+      <div class="metric"><span class="metric-num">30</span><span class="metric-label">Team Members Led</span></div>
+      <div class="metric"><span class="metric-num">2</span><span class="metric-label">Eldorado Awards Earned</span></div>
+    </div>
+
+    <div class="sub-label">Key Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">Dell Premier Plus</div>
+        <div class="project-dates">Mar 2015 – Apr 2018</div>
+        <p class="project-body">Global program localizing Dell's B2B e-commerce platform across Argentina, Brazil, Chile, Colombia, Mexico, and Peru, then expanding into Australia, Canada, Europe, and Japan. As Project Leader, I prepared and aligned three Brazilian Scrum teams for this fast-paced program, navigating real cultural and methodological differences across geographies. <strong>Result:</strong> 20,000+ customer stores migrated to the upgraded platform worldwide.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Dell Commissioning Tool</div>
+        <div class="project-dates">Oct 2017 – Apr 2018</div>
+        <p class="project-body">A cloud-based C# web application to handle commission payments for Brazilian resellers. As Product Owner, I drafted user stories, managed the backlog, and served as the primary liaison with business users. <strong>Result:</strong> reduced the monthly closing cycle from three weeks (two people) to two days (one person), cutting errors and manual workload.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">Dell PPBSys</div>
+        <div class="project-dates">Apr 2014 – Feb 2015</div>
+        <p class="project-body">An application to manage Basic Production Processes and calculate R&amp;D tax obligations, ensuring compliance with local Brazilian regulations. As Project Leader, I owned the process end-to-end, from planning through deployment, facilitating Scrum ceremonies throughout. <strong>Result:</strong> streamlined revenue and tax-cost calculations, and earned the Eldorado Flash Award.</p>
+      </div>
+    </div>
+
+    <div class="sub-label">Honors &amp; Awards</div>
+    <div class="award-row">
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <div>
+          <div class="award-name">Eldorado Excellence Award (PEEC)</div>
+          <div class="award-issuer">Issued by Eldorado Research Institute · Dec 2016</div>
+          <div class="award-quote">"Julio leads and understands the teams with great ability, plays his role with unmatched competence, supports the development team with mastery, and guides their leaders on the path of development and maturity — culminating in differentiated project results, facing an extremely demanding customer."</div>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">⚡</div>
+        <div>
+          <div class="award-name">Flash Award (Destaque Flash)</div>
+          <div class="award-issuer">Issued by Eldorado Research Institute · Jul 2014</div>
+          <div class="award-quote">"For participation in the PPBSys project, which was internally rewarded for its contribution to improving its processes, as well as allowing new business prospects alongside it."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reflection">
+      <div class="reflection-label">Reflection</div>
+      <p>Dell was marked by successful project executions, innovative solutions, and a deep commitment to excellence — not just to Dell's growth, but to my own. These projects shaped how I approach project management and leadership to this day, particularly the discipline of balancing cultural and methodological differences across truly global teams.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ════════════════════════════════
+       HEWLETT-PACKARD
+  ════════════════════════════════ -->
+  <section class="role-section" id="hp">
+    <div class="role-header">
+      <div class="role-title-block">
+        <div class="role-company">Hewlett-Packard</div>
+        <div class="role-title">Project Manager — Software Development</div>
+        <div class="role-meta">Porto Alegre, RS, Brazil · On-site · Full-time (via T&amp;T Engenheiros Associados)</div>
+      </div>
+      <div class="role-years">
+        <div class="range">Apr 2011 – Mar 2014</div>
+        <div class="duration">3 yrs</div>
+      </div>
+    </div>
+
+    <p class="role-intro">HP is a global technology leader spanning personal computing, enterprise servers, storage, networking, software, and services. This was my first project management role of scale — and the project I inherited was struggling. I joined to turn it around.</p>
+
+    <div class="metrics-strip">
+      <div class="metric"><span class="metric-num">7→16</span><span class="metric-label">Team Growth</span></div>
+      <div class="metric"><span class="metric-num">6</span><span class="metric-label">Countries on the Team</span></div>
+      <div class="metric"><span class="metric-num">85%</span><span class="metric-label">Test Cycle Time Reduction</span></div>
+    </div>
+
+    <div class="sub-label">Key Projects</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-title">HP Cloud System Matrix</div>
+        <div class="project-dates">Apr 2011 – Apr 2014</div>
+        <p class="project-body">A comprehensive Infrastructure-as-a-Service (IaaS) product for private and hybrid cloud setups — a global initiative spanning development teams in the USA, Brazil, India, Romania, Japan, and Israel. I led the team to consistently exceed customer expectations, resulting in contract renewal with expanded scope. <strong>Result:</strong> grew the team from 7 to 16 members and delivered four major product releases.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">HP Capacity Advisor</div>
+        <div class="project-dates">2012 – 2013</div>
+        <p class="project-body">A critical capacity-planning and optimization component of HP's cloud infrastructure suite, helping IT administrators simulate workload scenarios and make informed resource decisions. I delivered two product releases, keeping the tool aligned with evolving customer needs in a competitive market.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-title">HP IO Test Automation</div>
+        <div class="project-dates">Apr 2011 – Dec 2011</div>
+        <p class="project-body">A quality initiative to automate enclosure backward-compatibility testing for the Cloud System Matrix using QuickTest Professional (QTP). By integrating a 6-week manual test into an existing automated suite, I eliminated weeks of redundant testing entirely. <strong>Result:</strong> an 85% reduction in compatibility testing time.</p>
+      </div>
+    </div>
+
+    <div class="sub-label">What I Built</div>
+    <p class="project-body" style="max-width:760px;">Beyond product delivery, I led team development through deliberate empowerment and collaboration practices — team-building events, clear ownership, and a culture of continuous improvement — while managing up to 25 direct reports across a genuinely global team. Robust risk management and transparent stakeholder communication were central to navigating that complexity successfully.</p>
+
+    <div class="reflection">
+      <div class="reflection-label">Reflection</div>
+      <p>This chapter was marked by successful project executions, effective team leadership, and significant process improvements. It honed my skills in project management, risk management, and team development — providing the foundation that every later chapter of my career has built on.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p><a href="index.html">← Back to main page</a> &nbsp;·&nbsp; © 2026 Julio Gulias &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener">LinkedIn</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Tab active state on scroll
+  const sections = document.querySelectorAll('.role-section');
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const id = e.target.id;
+        tabBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('onclick').includes(id));
+        });
+      }
+    });
+  }, { threshold: 0.25 });
+  sections.forEach(s => sectionObserver.observe(s));
+
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>

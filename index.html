@@ -39,37 +39,98 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Nav ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem;
-      height: 60px;
-      background: rgba(15,27,45,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,196,179,0.15);
+    /* ── Site Header & Nav ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 36px;
+      background: rgba(13,29,47,0.94);
+      border-bottom: 1px solid rgba(0,210,190,0.12);
+      backdrop-filter: blur(10px);
     }
-    .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-      color: var(--off-white);
+    .brand {
       text-decoration: none;
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
-    .nav-links { display: flex; gap: 2rem; }
-    .nav-links a {
-      font-size: 0.78rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+    .brand-subtitle {
+      margin-top: 4px;
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .main-nav a,
+    .nav-dropdown-toggle {
       color: var(--muted);
       text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--teal); }
+    .main-nav a:hover,
+    .nav-dropdown-toggle:hover { color: var(--teal); }
+    .main-nav a.active { color: var(--teal); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 32px;
+      right: 0;
+      min-width: 220px;
+      padding: 14px;
+      background: #142942;
+      border: 1px solid rgba(0,196,179,0.25);
+      border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+    .nav-dropdown-menu a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover {
+      background: rgba(0,196,179,0.08);
+      color: var(--teal);
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+
+    @media (max-width: 768px) {
+      .main-nav { display: none; }
+    }
 
     /* ── Hero ── */
-    #hero {
+    #home {
       min-height: 100vh;
       display: grid;
       place-items: center;
@@ -98,9 +159,9 @@
       text-transform: uppercase;
       color: var(--teal);
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(0,196,179,0.35);
-      padding: 0.3rem 0.8rem;
-      border-radius: 2px;
+      border: 1px solid rgba(0,196,179,0.5);
+      padding: 0.4rem 1rem;
+      border-radius: 0;
     }
     h1 {
       font-family: var(--font-display);
@@ -140,6 +201,9 @@
       color: var(--white);
       line-height: 1;
     }
+    .stat:last-child .stat-num {
+      font-size: 1.5rem;
+    }
     .stat-label {
       font-size: 0.72rem;
       font-weight: 500;
@@ -148,21 +212,34 @@
       color: var(--teal);
       margin-top: 0.3rem;
     }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
     .hero-cta {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.15s, border-color 0.2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); }
+    .hero-cta--primary {
       background: var(--teal);
       color: var(--navy);
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: var(--radius);
-      transition: background 0.2s, transform 0.15s;
     }
-    .hero-cta:hover { background: #00ddd0; transform: translateY(-2px); }
+    .hero-cta--primary:hover { background: #00ddd0; }
+    .hero-cta--ghost {
+      background: transparent;
+      color: var(--off-white);
+      border: 1px solid rgba(240,237,230,0.35);
+    }
+    .hero-cta--ghost:hover { border-color: var(--teal); color: var(--teal); }
 
     /* ── Section Shell ── */
     section { padding: 6rem 2rem; }
@@ -185,112 +262,145 @@
     }
 
     /* ── Timeline ── */
-    #career { background: var(--navy-mid); }
+    #experience { background: var(--navy-mid); }
 
-    .timeline {
-      position: relative;
-      padding-left: 0;
-    }
+    .timeline { position: relative; }
+
     /* Vertical rule */
     .timeline::before {
       content: '';
       position: absolute;
-      left: 100px;
+      left: 178px;
       top: 0; bottom: 0;
       width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--teal) 5%, var(--teal) 95%, transparent);
-      opacity: 0.3;
+      background: linear-gradient(to bottom, transparent, var(--teal) 3%, var(--teal) 97%, transparent);
+      opacity: 0.25;
     }
 
     .timeline-entry {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 0 2.5rem;
+      grid-template-columns: 178px 1fr;
+      gap: 0 2.75rem;
       margin-bottom: 4rem;
       position: relative;
     }
     .timeline-entry:last-child { margin-bottom: 0; }
 
-    .timeline-year {
-      text-align: right;
-      padding-right: 0;
-      padding-top: 0.15rem;
-    }
-    .year-range {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--teal);
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-    .year-range span {
-      display: block;
-      color: var(--steel);
-      font-size: 0.65rem;
-    }
-
-    /* Dot on the line */
+    /* Dot on the line — aligned to top of company name */
     .timeline-entry::after {
       content: '';
       position: absolute;
-      left: 96px;
-      top: 0.55rem;
-      width: 9px; height: 9px;
+      left: 171px;
+      top: 0.45rem;
+      width: 14px; height: 14px;
       border-radius: 50%;
       background: var(--teal);
-      box-shadow: 0 0 0 3px var(--navy-mid), 0 0 0 5px rgba(0,196,179,0.3);
+      box-shadow: 0 0 0 3px var(--navy-mid), 0 0 0 7px rgba(0,196,179,0.2);
+    }
+
+    .timeline-year {
+      text-align: right;
+      padding-top: 0.3rem;
+    }
+    .year-range {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.3;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
     }
 
     .timeline-content {}
-    .tl-header {
-      margin-bottom: 0.8rem;
-    }
+    .tl-header { margin-bottom: 0.6rem; }
     .tl-company {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 0.2rem;
+      line-height: 1.1;
     }
     .tl-role {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       color: var(--amber);
       text-transform: uppercase;
+      margin-bottom: 0.25rem;
     }
     .tl-location {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       color: var(--steel);
-      margin-top: 0.15rem;
-    }
-    .tl-body {
-      font-size: 0.92rem;
-      color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 1.1rem;
-      max-width: 680px;
-    }
-    .tl-tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+      align-items: center;
+      gap: 0.3rem;
+      margin-bottom: 0.9rem;
     }
-    .tag {
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: var(--teal-dim);
+    .tl-location::before { content: '📍'; font-size: 0.75rem; }
+    .tl-positioning {
+      font-size: 0.93rem;
+      color: var(--off-white);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 680px;
+      font-weight: 400;
+    }
+    .tl-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.1rem 0;
+      max-width: 680px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .tl-bullets li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .tl-bullets li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
       color: var(--teal);
-      padding: 0.2rem 0.6rem;
+      font-weight: 700;
+    }
+    .tl-bullets li strong { color: var(--off-white); font-weight: 600; }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--teal);
+      padding: 0.25rem 0.7rem;
       border-radius: 3px;
-      border: 1px solid rgba(0,196,179,0.2);
+      border: 1px solid rgba(0,196,179,0.35);
+    }
+
+    /* ── Timeline mobile reflow ──
+       Date moves ABOVE company name; dot + vertical rule hidden */
+    @media (max-width: 640px) {
+      .timeline::before { display: none; }
+      .timeline-entry {
+        display: block;
+      }
+      .timeline-entry::after { display: none; }
+      .timeline-year {
+        text-align: left;
+        margin-bottom: 0.35rem;
+      }
+      .year-range { font-size: 0.85rem; }
+      .tl-company { font-size: 1.4rem; }
     }
 
     /* ── Skills ── */
-    #skills { background: var(--navy); }
+    #strengths { background: var(--navy); }
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -369,33 +479,53 @@
     /* ── Contact / Footer ── */
     #contact {
       background: var(--navy);
-      padding: 5rem 2rem;
+      padding: 6rem 2rem 4rem;
       text-align: center;
     }
-    #contact h2 { margin-bottom: 1rem; }
-    #contact p {
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+    #contact .section-eyebrow {
+      margin-bottom: 0.6rem;
     }
+    .eyebrow-rule {
+      width: 2.5rem;
+      height: 2px;
+      background: var(--teal);
+      margin: 0 auto 1.75rem;
+    }
+    #contact h2 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 1.25rem;
+    }
+    #contact .contact-intro {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 560px;
+      margin: 0 auto 2.75rem;
+    }
+    #contact .contact-intro a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    #contact .contact-intro a:hover { text-decoration: underline; }
     .contact-links {
       display: flex;
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-bottom: 3.5rem;
     }
     .contact-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius);
-      font-size: 0.85rem;
+      gap: 0.65rem;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.15s, background 0.2s;
+      min-width: 220px;
+      justify-content: center;
+      transition: transform 0.15s, background 0.2s, border-color 0.2s;
     }
     .contact-btn:hover { transform: translateY(-2px); }
     .contact-btn.primary {
@@ -406,20 +536,65 @@
     .contact-btn.ghost {
       background: transparent;
       color: var(--off-white);
-      border: 1px solid rgba(240,237,230,0.25);
+      border: 1px solid rgba(240,237,230,0.3);
     }
     .contact-btn.ghost:hover { border-color: var(--teal); color: var(--teal); }
 
+    /* Value strip */
+    .contact-values {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .contact-value {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0 2.5rem;
+      flex: 1;
+      min-width: 180px;
+    }
+    .contact-value + .contact-value {
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .value-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+    .value-text {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.4;
+      text-align: left;
+    }
+
     footer {
       background: var(--navy);
-      padding: 1.5rem 2rem;
+      padding: 1.75rem 2rem;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 4rem;
     }
     footer p {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--steel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
+    footer .dot { color: var(--steel); opacity: 0.5; }
 
     /* ── Divider ── */
     .divider {
@@ -445,40 +620,48 @@
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
-      .timeline::before { left: 70px; }
-      .timeline-entry { grid-template-columns: 70px 1fr; }
-      .timeline-entry::after { left: 66px; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
       .hero-stats { gap: 1.5rem; }
-    }
-    @media (max-width: 480px) {
-      .timeline::before { display: none; }
-      .timeline-entry { grid-template-columns: 1fr; }
-      .timeline-entry::after { display: none; }
-      .timeline-year { text-align: left; margin-bottom: 0.5rem; }
+      .hero-ctas { flex-direction: column; }
+      .hero-cta { justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
-<nav>
-  <a class="nav-logo" href="#hero">Julio Gulias</a>
-  <div class="nav-links">
-    <a href="#career">Career</a>
-    <a href="#skills">Skills</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+<!-- ── HEADER / NAV ── -->
+<header class="site-header">
+  <a class="brand" href="index.html#home">
+    <span class="brand-name">Julio Gulias</span>
+    <span class="brand-subtitle">Project &amp; Delivery Leadership</span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#strengths">Strengths</a>
+    <a href="index.html#about">About</a>
+    <a href="recommendations.html">Recommendations</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle" type="button">
+        More <span aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="training.html">Training &amp; Certifications</a>
+        <a href="articles.html">Articles</a>
+        <a href="volunteering.html">Volunteering</a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
 
 <!-- ── HERO ── -->
-<section id="hero">
+<section id="home">
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-label">Available for new opportunities</div>
     <h1>Delivering complex<br>projects<em>.</em> Building<br>great teams<em>.</em></h1>
-    <p class="hero-sub">Senior Project &amp; Engagement Manager with 15+ years leading software, infrastructure, and professional services engagements across four continents.</p>
+    <p class="hero-sub">Senior Project, Program &amp; Delivery Manager with 15+ years helping organizations bring structure to ambiguity, align stakeholders, and deliver complex software, infrastructure, cybersecurity, and professional services initiatives.</p>
     <div class="hero-stats">
       <div class="stat">
         <span class="stat-num">15+</span>
@@ -489,47 +672,60 @@
         <span class="stat-label">Projects Delivered</span>
       </div>
       <div class="stat">
-        <span class="stat-num">5</span>
-        <span class="stat-label">Countries Worked In</span>
+        <span class="stat-num">4</span>
+        <span class="stat-label">Continents Served</span>
       </div>
       <div class="stat">
-        <span class="stat-num">F500</span>
-        <span class="stat-label">Clients Served</span>
+        <span class="stat-num">Fortune 500</span>
+        <span class="stat-label">Clients Supported</span>
       </div>
     </div>
-    <a class="hero-cta" href="#career">
-      View my career
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
+    <div class="hero-ctas">
+      <a class="hero-cta hero-cta--primary" href="#contact">
+        Download resume
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a class="hero-cta hero-cta--ghost" href="#experience">
+        View career highlights
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ── CAREER TIMELINE ── -->
-<section id="career">
+<section id="experience">
   <div class="section-inner">
     <div class="section-eyebrow">Professional History</div>
-    <h2>Career Timeline</h2>
+    <h2>Experience Highlights</h2>
+    <p style="font-size:0.95rem; color:var(--muted); max-width:480px; margin-top:-2rem; margin-bottom:3.5rem; line-height:1.7;">A timeline of key roles and achievements that shaped my journey as a delivery and project leadership professional.</p>
 
     <div class="timeline">
 
       <!-- Backbone -->
       <div class="timeline-entry reveal">
         <div class="timeline-year">
-          <div class="year-range">2024<span>– 2026</span></div>
+          <div class="year-range">2024 – 2026</div>
         </div>
         <div class="timeline-content">
           <div class="tl-header">
             <div class="tl-company">Backbone</div>
-            <div class="tl-role">Head of Professional Services — North America &amp; Brazil</div>
+            <div class="tl-role">Head of Professional Services — North America</div>
             <div class="tl-location">Burnaby, BC, Canada</div>
           </div>
-          <p class="tl-body">Stepped into a broad leadership role at a growth-stage professional services firm, moving beyond project delivery to help shape how the entire services function operated. Built standardized delivery governance, introduced risk management frameworks, and improved capacity planning across distributed teams — shifting the practice from a people-dependent model to a more scalable and predictable operation. Led engagements for clients including Longo's, FNHA, and others across e-commerce, government, and digital platform sectors.</p>
+          <p class="tl-positioning">Led professional services delivery for a growth-stage digital experience platform firm, bringing structure, governance, and delivery predictability to a distributed services organization.</p>
+          <ul class="tl-bullets">
+            <li><strong>Standardized delivery governance</strong>, status reporting, risk management, change control, and capacity planning across distributed teams in Canada, Latin America, and Europe.</li>
+            <li><strong>Led client delivery</strong> across e-commerce, government, and digital platform sectors, including Longo's and other implementation engagements.</li>
+            <li><strong>Supported pre-sales and delivery planning</strong> for prospective enterprise opportunities, helping align scope, assumptions, solution approach, and services capacity.</li>
+            <li><strong>Helped shift</strong> the services function from a people-dependent delivery model toward a more repeatable operating model with clearer accountability, visibility, and execution discipline.</li>
+          </ul>
           <div class="tl-tags">
             <span class="tag">Professional Services Leadership</span>
             <span class="tag">Delivery Governance</span>
-            <span class="tag">Change Control</span>
+            <span class="tag">Operating Model</span>
             <span class="tag">Capacity Planning</span>
             <span class="tag">Stakeholder Management</span>
           </div>
@@ -539,7 +735,7 @@
       <!-- Liferay -->
       <div class="timeline-entry reveal">
         <div class="timeline-year">
-          <div class="year-range">2022<span>– 2023</span></div>
+          <div class="year-range">2022 – 2023</div>
         </div>
         <div class="timeline-content">
           <div class="tl-header">
@@ -547,13 +743,18 @@
             <div class="tl-role">Engagement Manager — Professional Services</div>
             <div class="tl-location">Remote — Diamond Bar, CA, USA</div>
           </div>
-          <p class="tl-body">Managed 14 professional services engagements for Fortune 500–calibre organizations across the US, Canada, and the Caribbean, including Quest Diagnostics (#303), US Bank (#150), and CNO Financial Group (#540). Collaborated with Sales and Legal to draft Statements of Work, assembled delivery teams including subcontractors, and partnered with Customer Success Managers to drive long-term client satisfaction.</p>
+          <p class="tl-positioning">Managed enterprise professional services engagements for Fortune 500-calibre clients across North America and the Caribbean.</p>
+          <ul class="tl-bullets">
+            <li><strong>Led 14 client engagements</strong>, including Quest Diagnostics, US Bank, FHLBNY, and CNO Financial Group.</li>
+            <li><strong>Partnered with Sales and Legal</strong> to draft Statements of Work and align scope, assumptions, delivery approach, and risk.</li>
+            <li><strong>Coordinated delivery teams</strong>, subcontractors, and Customer Success Managers to support long-term client satisfaction.</li>
+          </ul>
           <div class="tl-tags">
             <span class="tag">Engagement Management</span>
             <span class="tag">SOW Development</span>
+            <span class="tag">Enterprise Clients</span>
+            <span class="tag">Delivery Risk Management</span>
             <span class="tag">DXP / Liferay</span>
-            <span class="tag">Fortune 500 Clients</span>
-            <span class="tag">Risk Management</span>
           </div>
         </div>
       </div>
@@ -561,7 +762,7 @@
       <!-- BCNET -->
       <div class="timeline-entry reveal">
         <div class="timeline-year">
-          <div class="year-range">2020<span>– 2022</span></div>
+          <div class="year-range">2020 – 2022</div>
         </div>
         <div class="timeline-content">
           <div class="tl-header">
@@ -569,22 +770,26 @@
             <div class="tl-role">Project Manager — Network Infrastructure &amp; Cybersecurity</div>
             <div class="tl-location">Vancouver, BC, Canada</div>
           </div>
-          <p class="tl-body">Led 79 network and cybersecurity projects — managing up to 38 simultaneously — for BC's higher education institutions including UBC, SFU, UVic, and KPU. Delivered redundant network connectivity across 20 post-secondary campuses, implemented DDoS detection tools (Arbor Sightline, Cisco Crosswork), and championed the migration from on-premise Jira to cloud-based TeamDynamix. Introduced project management culture through Change Management principles.</p>
+          <p class="tl-positioning">Led a portfolio of network infrastructure and cybersecurity projects for British Columbia's higher education sector.</p>
+          <ul class="tl-bullets">
+            <li><strong>Delivered 79 projects</strong> for institutions including UBC, SFU, UVic, and KPU, managing up to 38 initiatives simultaneously.</li>
+            <li><strong>Delivered redundant network connectivity</strong> across 20 post-secondary campuses and implemented DDoS detection tools.</li>
+            <li><strong>Supported the migration</strong> from on-premises Jira to cloud-based TeamDynamix and introduced stronger project management practices.</li>
+          </ul>
           <div class="tl-tags">
+            <span class="tag">Portfolio Delivery</span>
             <span class="tag">Network Infrastructure</span>
             <span class="tag">Cybersecurity</span>
             <span class="tag">DDoS Mitigation</span>
-            <span class="tag">Portfolio Management</span>
             <span class="tag">Change Management</span>
           </div>
         </div>
       </div>
 
-      <!-- Liferay gap note implied, skip to Dell -->
       <!-- Dell -->
       <div class="timeline-entry reveal">
         <div class="timeline-year">
-          <div class="year-range">2014<span>– 2018</span></div>
+          <div class="year-range">2014 – 2018</div>
         </div>
         <div class="timeline-content">
           <div class="tl-header">
@@ -592,13 +797,18 @@
             <div class="tl-role">Senior Project Manager — Software Development</div>
             <div class="tl-location">Porto Alegre, RS, Brazil</div>
           </div>
-          <p class="tl-body">Led 9 high-impact software development projects, including the global rollout of Dell Premier Plus — a B2B e-commerce platform localized for six Latin American countries and expanded into Australia, Canada, Europe, and Japan, migrating 20,000+ customer stores worldwide. Also served as Product Owner for the Dell Commissioning Tool, reducing a 3-week manual process to 2 days. Received the Eldorado Flash Award for the Dell PPBSys project. Balanced Scrum Master responsibilities across multiple teams.</p>
+          <p class="tl-positioning">Led global software development initiatives for Dell's enterprise platforms, combining project leadership, agile delivery, and product ownership.</p>
+          <ul class="tl-bullets">
+            <li><strong>Delivered 9 high-impact software projects</strong>, including the global rollout of Dell Premier Plus across Latin America, Australia, Canada, Europe, and Japan.</li>
+            <li><strong>Supported the migration of 20,000+ customer stores</strong> worldwide and helped localize a B2B e-commerce platform for six Latin American countries.</li>
+            <li><strong>Served as Product Owner</strong> for the Dell Commissioning Tool, reducing a 3-week manual process to 2 days.</li>
+          </ul>
           <div class="tl-tags">
-            <span class="tag">B2B E-Commerce</span>
             <span class="tag">Global Programs</span>
-            <span class="tag">Scrum Master</span>
-            <span class="tag">Product Owner</span>
-            <span class="tag">Agile / Scrum</span>
+            <span class="tag">B2B E-Commerce</span>
+            <span class="tag">Agile Delivery</span>
+            <span class="tag">Product Ownership</span>
+            <span class="tag">Scrum / Kanban</span>
           </div>
         </div>
       </div>
@@ -606,7 +816,7 @@
       <!-- HP -->
       <div class="timeline-entry reveal">
         <div class="timeline-year">
-          <div class="year-range">2011<span>– 2014</span></div>
+          <div class="year-range">2011 – 2014</div>
         </div>
         <div class="timeline-content">
           <div class="tl-header">
@@ -614,25 +824,37 @@
             <div class="tl-role">Project Manager — Software Development</div>
             <div class="tl-location">Porto Alegre, RS, Brazil</div>
           </div>
-          <p class="tl-body">Joined to turn around a troubled global project and built it into a high-performance team that earned expanded scope. Delivered four releases of HP Cloud System Matrix (IaaS for private and hybrid clouds) and two releases of HP Capacity Advisor, collaborating with development teams across the US, Brazil, India, Romania, Japan, and Israel. Grew the team from 7 to 16 members and eliminated a 6-week backward compatibility test cycle through automation.</p>
+          <p class="tl-positioning">Joined a troubled global software project and helped turn it into a high-performing team that earned expanded scope.</p>
+          <ul class="tl-bullets">
+            <li><strong>Delivered four releases</strong> of HP Cloud System Matrix and two releases of HP Capacity Advisor across distributed global teams.</li>
+            <li><strong>Grew the team from 7 to 16 members</strong> while collaborating with teams across the US, Brazil, India, Romania, Japan, and Israel.</li>
+            <li><strong>Eliminated a 6-week backward compatibility test cycle</strong> through automation and process improvement.</li>
+          </ul>
           <div class="tl-tags">
-            <span class="tag">Cloud Infrastructure (IaaS)</span>
+            <span class="tag">Delivery Recovery</span>
+            <span class="tag">Cloud Infrastructure</span>
             <span class="tag">Global Teams</span>
             <span class="tag">Test Automation</span>
             <span class="tag">Team Leadership</span>
-            <span class="tag">Process Improvement</span>
           </div>
         </div>
       </div>
 
     </div><!-- /timeline -->
+
+    <div style="text-align:center; margin-top: 3rem;">
+      <a href="roles.html" class="hero-cta hero-cta--primary" style="text-decoration:none;">
+        View full role details
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
 <!-- ── SKILLS ── -->
-<section id="skills">
+<section id="strengths">
   <div class="section-inner">
     <div class="section-eyebrow">What I Do Best</div>
     <h2>Core Competencies</h2>
@@ -680,31 +902,32 @@
     <h2>The person behind the résumé</h2>
     <div class="about-grid">
       <div class="about-text reveal">
-        <p>I'm a Brazilian-Canadian project and engagement manager with over 15 years of experience leading technology initiatives across four continents. My career started in software development at global companies in Brazil — HP and Dell — and then took me to Canada, where I've been building on that foundation in network infrastructure, enterprise software, and professional services.</p>
-        <p>What I've learned is that <strong>technology projects succeed or fail on the quality of the conversations around them</strong>. Getting the technical decisions right matters. Getting the team aligned, the client confident, and the risks visible matters just as much — often more.</p>
-        <p>I'm at my best when I'm navigating complexity: multiple stakeholders, evolving scope, distributed teams, and high expectations. I bring structure to ambiguous environments without turning structure into bureaucracy, and I've built a track record of turning struggling projects into high-performing ones.</p>
+        <p>I'm a Brazilian-Canadian project, program, and delivery leader with over 15 years of experience leading technology initiatives across software development, infrastructure, enterprise software, and professional services. My career started in software development at global companies in Brazil — HP and Dell — and later brought me to Canada, where I've built on that foundation in network infrastructure, cybersecurity, digital platforms, and professional services.</p>
+        <p>What I've learned is that <strong>technology projects often succeed or fail on the quality of the conversations around them</strong>. Getting the technical decisions right matters. Getting the team aligned, the client confident, and the risks visible matters just as much — often more.</p>
+        <p>I'm at my best when I'm navigating complexity: multiple stakeholders, evolving scope, distributed teams, and high expectations. I bring structure to ambiguous environments without turning structure into bureaucracy, and I've built a track record of helping struggling projects become healthier, clearer, and more predictable.</p>
         <p>Right now, I'm looking for my next role — ideally one where I can lead at the intersection of <strong>delivery, client success, and operational excellence</strong>.</p>
       </div>
       <div class="about-sidebar reveal">
         <div class="sidebar-block">
           <h4>Location</h4>
-          <p>New Westminster, BC, Canada<br><span style="color:var(--steel);font-size:0.82rem">Open to hybrid and remote opportunities</span></p>
+          <p>Greater Vancouver, BC, Canada<br><span style="color:var(--steel);font-size:0.82rem">Open to hybrid and remote opportunities</span></p>
         </div>
         <div class="sidebar-block">
           <h4>Languages</h4>
           <ul>
             <li>English — Professional fluency</li>
             <li>Portuguese — Native</li>
-            <li>Spanish — Conversational</li>
+            <li>Spanish — Conversational; strong comprehension</li>
           </ul>
         </div>
         <div class="sidebar-block">
           <h4>Industries</h4>
           <ul>
             <li>Enterprise Software / SaaS</li>
-            <li>Network Infrastructure &amp; Cybersecurity</li>
+            <li>Digital Experience Platforms</li>
             <li>E-Commerce &amp; B2B Platforms</li>
-            <li>Higher Education Technology</li>
+            <li>Network Infrastructure &amp; Cybersecurity</li>
+            <li>Public Sector &amp; Higher Education</li>
             <li>Professional Services</li>
           </ul>
         </div>
@@ -712,8 +935,9 @@
           <h4>Tools &amp; Methods</h4>
           <ul>
             <li>Jira, Confluence, TeamDynamix</li>
-            <li>Scrum, Kanban, Agile</li>
-            <li>Risk Management (RAID)</li>
+            <li>Azure DevOps / TFS, MS Project</li>
+            <li>Scrum, Kanban, Hybrid Delivery</li>
+            <li>RAID, Risk &amp; Issue Management</li>
             <li>SOW / Change Order Management</li>
           </ul>
         </div>
@@ -728,23 +952,52 @@
 <section id="contact">
   <div class="section-inner">
     <div class="section-eyebrow">Get in touch</div>
+    <div class="eyebrow-rule"></div>
     <h2>Let's talk</h2>
-    <p>I'm currently open to new opportunities in project management, engagement management, or professional services leadership. Feel free to reach out on LinkedIn.</p>
+    <p class="contact-intro">I'm currently open to new opportunities in project, program, delivery, and professional services leadership. Reach out on LinkedIn or send me a note — <a href="mailto:julio.gulias@gmail.com">I'd be glad to connect.</a></p>
     <div class="contact-links">
       <a class="contact-btn primary" href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn Profile
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="3"/><path fill="var(--navy)" d="M7 10h2v7H7zm1-3a1.1 1.1 0 110 2.2A1.1 1.1 0 018 7zm4 3h1.9v1h.05A2.2 2.2 0 0116 9.9c2.1 0 2.5 1.4 2.5 3.2V17h-2v-3.5c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V17H12V10z"/></svg>
+        Connect on LinkedIn
       </a>
       <a class="contact-btn ghost" href="mailto:julio.gulias@gmail.com">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Send an Email
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Send Email
       </a>
+    </div>
+
+    <!-- Value strip -->
+    <div class="contact-values">
+      <div class="contact-value">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <span class="value-text">Open to the right opportunity</span>
+      </div>
+      <div class="contact-value">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <span class="value-text">Collaboration that drives results</span>
+      </div>
+      <div class="contact-value">
+        <div class="value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <span class="value-text">Focused on value, impact, and people</span>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Julio Gulias · Built with plain HTML — hosted free on GitHub Pages</p>
+  <p>
+    <span>© 2026 Julio Gulias</span>
+    <span class="dot">•</span>
+    <span>Built with plain HTML</span>
+    <span class="dot">•</span>
+    <span>Hosted on GitHub Pages</span>
+  </p>
 </footer>
 
 <script>

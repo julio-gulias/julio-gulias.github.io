@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Volunteering · Julio Gulias</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy:#0F1B2D;--navy-mid:#182740;--navy-card:#1C3050;--steel:#4A6580;
+      --teal:#00C4B3;--amber:#F59E0B;--off-white:#F0EDE6;--muted:#8FA3B8;--white:#FFFFFF;
+      --font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--navy);color:var(--off-white);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+    .site-header{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 36px;background:rgba(13,29,47,0.94);border-bottom:1px solid rgba(0,210,190,0.12);backdrop-filter:blur(10px)}
+    .brand{text-decoration:none;color:var(--white);display:flex;flex-direction:column;line-height:1.1}
+    .brand-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700}
+    .brand-subtitle{margin-top:4px;font-size:0.8rem;color:var(--steel)}
+    .main-nav{display:flex;align-items:center;gap:32px}
+    .main-nav a,.nav-dropdown-toggle{color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;font-size:0.78rem;font-weight:700;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;transition:color 0.2s}
+    .main-nav a:hover,.nav-dropdown-toggle:hover{color:var(--teal)}
+    .main-nav a.active{color:var(--teal)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown-menu{display:none;position:absolute;top:32px;right:0;min-width:220px;padding:14px;background:#142942;border:1px solid rgba(0,196,179,0.25);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,0.25)}
+    .nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;font-size:0.75rem;font-weight:700;color:var(--muted);white-space:nowrap}
+    .nav-dropdown-menu a:hover{background:rgba(0,196,179,0.08);color:var(--teal)}
+    .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:block}
+    @media(max-width:768px){.main-nav{display:none}}
+    .page-header{padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto}
+    .page-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem}
+    .page-header h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:1rem}
+    .coming-soon{max-width:1100px;margin:0 auto;padding:0 2rem 6rem;display:flex;align-items:center;gap:1rem;color:var(--muted);font-size:0.95rem}
+    .coming-soon-pill{background:rgba(0,196,179,0.1);border:1px solid rgba(0,196,179,0.3);color:var(--teal);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:20px}
+    footer{background:var(--navy);padding:1.5rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
+    footer p{font-size:0.75rem;color:var(--steel)}
+    footer a{color:var(--teal);text-decoration:none}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="index.html#home">
+    <span class="brand-name">Julio Gulias</span>
+    <span class="brand-subtitle">Project &amp; Delivery Leadership</span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html#home">Home</a>
+    <a href="index.html#experience">Experience</a>
+    <a href="index.html#strengths">Strengths</a>
+    <a href="index.html#about">About</a>
+    <a href="recommendations.html">Recommendations</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle" type="button" style="color:var(--teal);">More <span aria-hidden="true">▾</span></button>
+      <div class="nav-dropdown-menu">
+        <a href="training.html">Volunteering</a>
+        <a href="articles.html">Articles</a>
+        <a href="volunteering.html" class="active">Volunteering</a>
+      </div>
+    </div>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+</header>
+<div class="page-header">
+  <div class="page-eyebrow">Learning & Development</div>
+  <h1>Volunteering</h1>
+</div>
+<div class="coming-soon">
+  <span class="coming-soon-pill">Coming soon</span>
+  <span>Content for this section is being prepared and will be published shortly.</span>
+</div>
+<footer><p><a href="index.html">← Back to main page</a> &nbsp;·&nbsp; © 2026 Julio Gulias</p></footer>
+</body>
+</html>
