@@ -3,43 +3,320 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Articles · Julio Gulias</title>
+  <title>Articles | Julio Gulias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
+    /* ── Tokens ── */
     :root {
-      --navy:#0F1B2D;--navy-mid:#182740;--navy-card:#1C3050;--steel:#4A6580;
-      --teal:#00C4B3;--amber:#F59E0B;--off-white:#F0EDE6;--muted:#8FA3B8;--white:#FFFFFF;
-      --font-display:'Playfair Display',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;
+      --navy:      #0F1B2D;
+      --navy-mid:  #142942;
+      --navy-card: #1C3050;
+      --steel:     #4A6580;
+      --teal:      #10cfc0;
+      --off-white: #F0EDE6;
+      --muted:     #9fb8d3;
+      --light:     #d6e4f2;
+      --white:     #FFFFFF;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--navy);color:var(--off-white);font-family:var(--font-body);-webkit-font-smoothing:antialiased}
-    .site-header{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 36px;background:rgba(13,29,47,0.94);border-bottom:1px solid rgba(0,210,190,0.12);backdrop-filter:blur(10px)}
-    .brand{text-decoration:none;color:var(--white);display:flex;flex-direction:column;line-height:1.1}
-    .brand-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700}
-    .brand-subtitle{margin-top:4px;font-size:0.8rem;color:var(--steel)}
-    .main-nav{display:flex;align-items:center;gap:32px}
-    .main-nav a,.nav-dropdown-toggle{color:var(--muted);text-decoration:none;text-transform:uppercase;letter-spacing:0.12em;font-size:0.78rem;font-weight:700;background:none;border:0;cursor:pointer;font-family:inherit;padding:0;transition:color 0.2s}
-    .main-nav a:hover,.nav-dropdown-toggle:hover{color:var(--teal)}
-    .main-nav a.active{color:var(--teal)}
-    .nav-dropdown{position:relative}
-    .nav-dropdown-menu{display:none;position:absolute;top:32px;right:0;min-width:220px;padding:14px;background:#142942;border:1px solid rgba(0,196,179,0.25);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,0.25)}
-    .nav-dropdown-menu a{display:block;padding:10px 14px;border-radius:6px;text-transform:uppercase;letter-spacing:0.1em;font-size:0.75rem;font-weight:700;color:var(--muted);white-space:nowrap}
-    .nav-dropdown-menu a:hover{background:rgba(0,196,179,0.08);color:var(--teal)}
-    .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown:focus-within .nav-dropdown-menu{display:block}
-    @media(max-width:768px){.main-nav{display:none}}
-    .page-header{padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto}
-    .page-eyebrow{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:0.75rem}
-    .page-header h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:var(--white);line-height:1.1;margin-bottom:1rem}
-    .coming-soon{max-width:1100px;margin:0 auto;padding:0 2rem 6rem;display:flex;align-items:center;gap:1rem;color:var(--muted);font-size:0.95rem}
-    .coming-soon-pill{background:rgba(0,196,179,0.1);border:1px solid rgba(0,196,179,0.3);color:var(--teal);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:20px}
-    footer{background:var(--navy);padding:1.5rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,0.08)}
-    footer p{font-size:0.75rem;color:var(--steel)}
-    footer a{color:var(--teal);text-decoration:none}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header & Nav ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 36px;
+      background: rgba(13,29,47,0.94);
+      border-bottom: 1px solid rgba(0,210,190,0.12);
+      backdrop-filter: blur(10px);
+    }
+    .brand { text-decoration: none; color: var(--white); display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; }
+    .brand-subtitle { margin-top: 4px; font-size: 0.8rem; color: var(--steel); }
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav a, .nav-dropdown-toggle {
+      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 700;
+      background: none; border: 0; cursor: pointer; font-family: inherit;
+      padding: 0; transition: color 0.2s;
+    }
+    .main-nav a:hover, .nav-dropdown-toggle:hover { color: var(--teal); }
+    .main-nav a.active, .nav-dropdown-toggle.active { color: var(--teal); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 32px; right: 0;
+      min-width: 220px; padding: 14px; background: #142942;
+      border: 1px solid rgba(0,196,179,0.25); border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 10px 14px; border-radius: 6px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 0.75rem; font-weight: 700; color: var(--muted); white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(0,196,179,0.08); color: var(--teal); }
+    .nav-dropdown-menu a.active { color: var(--teal); }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+    @media (max-width: 768px) { .main-nav { display: none; } }
+
+    /* ── Shared kicker ── */
+    .page-kicker, .section-kicker {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .page-kicker::after, .section-kicker::after {
+      content: "";
+      display: block;
+      width: 52px; height: 2px;
+      margin-top: 16px;
+      background: var(--teal);
+    }
+    .accent-dot { color: var(--teal); }
+
+    /* ================================
+       Articles Page
+    ================================ */
+
+    /* ── Hero ── */
+    .articles-hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 96px 32px 56px;
+    }
+    .articles-hero h1 {
+      max-width: 820px;
+      margin: 0 0 28px;
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6.5vw, 5.8rem);
+      line-height: 0.97;
+      color: var(--white);
+    }
+    .articles-hero p {
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      line-height: 1.72;
+    }
+
+    /* ── Featured Articles ── */
+    .featured-articles {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 32px 48px;
+    }
+    .featured-article-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .article-card {
+      display: flex;
+      flex-direction: column;
+      padding: 28px;
+      border: 1px solid rgba(159,184,211,0.18);
+      border-radius: 12px;
+      background: rgba(24,48,77,0.42);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.16);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16,207,192,0.45);
+    }
+    .article-card.featured {
+      min-height: 320px;
+    }
+    .article-card-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+    }
+    .article-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 14px;
+      flex: 1;
+    }
+    .article-card.featured h2 {
+      font-size: 1.45rem;
+    }
+    .article-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 22px;
+    }
+    .article-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(16,207,192,0.3);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+    .article-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: gap 0.2s;
+    }
+    .article-link:hover { gap: 10px; }
+
+    /* ── All Articles ── */
+    .article-groups {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 8px 32px 48px;
+    }
+    .article-group {
+      margin-bottom: 48px;
+    }
+    .article-group:last-child { margin-bottom: 0; }
+    .article-group-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(159,184,211,0.15);
+    }
+    .article-group-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .article-card.compact {
+      padding: 22px;
+      min-height: auto;
+    }
+    .article-card.compact h2 {
+      font-family: var(--font-body);
+      font-size: 0.98rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .article-card.compact p {
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    /* ── Bottom CTA ── */
+    .article-cta {
+      max-width: 1180px;
+      margin: 0 auto 48px;
+      padding: 48px 40px;
+      border: 1px solid rgba(159,184,211,0.18);
+      border-radius: 16px;
+      background: rgba(24,48,77,0.42);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.16);
+      text-align: center;
+    }
+    .article-cta p {
+      max-width: 680px;
+      margin: 0 auto 10px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1rem;
+    }
+    .article-cta p:first-of-type {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .article-cta p:last-of-type { margin-bottom: 32px; }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 28px;
+      background: var(--teal); color: #061724;
+      font-weight: 800; font-size: 0.9rem; letter-spacing: 0.02em;
+      text-decoration: none; border-radius: 8px;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); background: #0db8aa; }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 28px;
+      background: transparent; color: var(--white);
+      font-weight: 700; font-size: 0.9rem;
+      text-decoration: none; border-radius: 8px;
+      border: 1px solid rgba(240,237,230,0.28);
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { transform: translateY(-2px); border-color: var(--teal); color: var(--teal); }
+
+    /* ── Footer ── */
+    .site-footer {
+      max-width: 1180px; margin: 0 auto;
+      padding: 32px;
+      border-top: 1px solid rgba(159,184,211,0.14);
+      color: #7190af; text-align: center; font-size: 0.78rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 980px) {
+      .featured-article-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .article-group-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .articles-hero { padding: 72px 22px 40px; }
+      .featured-articles, .article-groups { padding-left: 22px; padding-right: 22px; }
+      .featured-article-grid { grid-template-columns: 1fr; }
+      .article-group-grid { grid-template-columns: 1fr; }
+      .article-cta { margin: 0 22px 40px; padding: 32px 24px; }
+    }
   </style>
 </head>
 <body>
+
+<!-- ── Header ── -->
 <header class="site-header">
   <a class="brand" href="index.html#home">
     <span class="brand-name">Julio Gulias</span>
@@ -52,9 +329,11 @@
     <a href="index.html#about">About</a>
     <a href="recommendations.html">Recommendations</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-toggle" type="button" style="color:var(--teal);">More <span aria-hidden="true">▾</span></button>
+      <button class="nav-dropdown-toggle active" type="button">
+        More <span aria-hidden="true">▾</span>
+      </button>
       <div class="nav-dropdown-menu">
-        <a href="training.html">Articles</a>
+        <a href="training.html">Training &amp; Certifications</a>
         <a href="articles.html" class="active">Articles</a>
         <a href="volunteering.html">Volunteering</a>
       </div>
@@ -62,14 +341,223 @@
     <a href="index.html#contact">Contact</a>
   </nav>
 </header>
-<div class="page-header">
-  <div class="page-eyebrow">Writing &amp; Insights</div>
-  <h1>Articles</h1>
-</div>
-<div class="coming-soon">
-  <span class="coming-soon-pill">Coming soon</span>
-  <span>Content for this section is being prepared and will be published shortly.</span>
-</div>
-<footer><p><a href="index.html">← Back to main page</a> &nbsp;·&nbsp; © 2026 Julio Gulias</p></footer>
+
+<main>
+
+  <!-- ── Hero ── -->
+  <section class="articles-hero">
+    <div class="page-kicker">Articles</div>
+    <h1>Thinking out loud about delivery, risk, and leadership<span class="accent-dot">.</span></h1>
+    <p>Selected articles originally published on LinkedIn, reflecting how I think about project delivery, professional services, risk management, planning, metrics, and career resilience.</p>
+  </section>
+
+  <!-- ── Featured Articles ── -->
+  <section class="featured-articles">
+    <div class="section-kicker">Featured Articles</div>
+    <div class="featured-article-grid">
+
+      <a class="article-card featured" href="https://www.linkedin.com/pulse/fitgap-analysis-hidden-risk-behind-discovery-models-julio-gulias-ajinc/?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+        <div class="article-card-label">Professional Services · Discovery</div>
+        <h2>Fit/Gap Analysis and the Hidden Risk Behind Discovery Models</h2>
+        <p>How discovery models affect assumptions, estimate accuracy, delivery risk, profitability, and client experience.</p>
+        <div class="article-tags">
+          <span class="article-tag">Professional Services</span>
+          <span class="article-tag">Discovery</span>
+          <span class="article-tag">Fit/Gap Analysis</span>
+          <span class="article-tag">Delivery Risk</span>
+        </div>
+        <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="article-card featured" href="https://www.linkedin.com/pulse/planning-does-make-delivery-certain-makes-more-julio-gulias-env5c?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+        <div class="article-card-label">Planning · Predictability</div>
+        <h2>Planning Does Not Make Delivery Certain. It Makes Delivery More Predictable.</h2>
+        <p>Why planning is not about pretending certainty exists, but about making uncertainty visible, manageable, and easier to communicate.</p>
+        <div class="article-tags">
+          <span class="article-tag">Project Planning</span>
+          <span class="article-tag">Predictability</span>
+          <span class="article-tag">Delivery Governance</span>
+          <span class="article-tag">Transparency</span>
+        </div>
+        <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+      </a>
+
+      <a class="article-card featured" href="https://www.linkedin.com/pulse/fuel-gauge-does-drive-car-julio-gulias-xnscc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+        <div class="article-card-label">Metrics · Execution</div>
+        <h2>The Fuel Gauge Does Not Drive the Car</h2>
+        <p>A reflection on why metrics matter, but leadership decisions, ownership, and action still move delivery forward.</p>
+        <div class="article-tags">
+          <span class="article-tag">Metrics</span>
+          <span class="article-tag">Execution</span>
+          <span class="article-tag">Leadership</span>
+          <span class="article-tag">Decision-Making</span>
+        </div>
+        <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── All Articles ── -->
+  <section class="article-groups">
+    <div class="section-kicker">All Articles</div>
+
+    <!-- Group 1 -->
+    <div class="article-group">
+      <div class="article-group-title">Delivery, Risk &amp; Professional Services</div>
+      <div class="article-group-grid">
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/fitgap-analysis-hidden-risk-behind-discovery-models-julio-gulias-ajinc/?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Fit/Gap Analysis and the Hidden Risk Behind Discovery Models</h2>
+          <p>How discovery models affect assumptions, estimate accuracy, delivery risk, profitability, and client experience.</p>
+          <div class="article-tags">
+            <span class="article-tag">Professional Services</span>
+            <span class="article-tag">Fit/Gap Analysis</span>
+            <span class="article-tag">Delivery Risk</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/transforming-risk-management-power-structured-julio-gulias-vkjtc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Transforming Risk Management: The Power of Structured Descriptions</h2>
+          <p>A practical look at how clearer risk descriptions improve communication, ownership, and response planning.</p>
+          <div class="article-tags">
+            <span class="article-tag">Risk Management</span>
+            <span class="article-tag">Communication</span>
+            <span class="article-tag">Project Delivery</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/risk-management-just-checkbox-backbone-your-project-success-gulias-dzaoc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Is Risk Management Just a Checkbox or the Backbone of Your Project Success?</h2>
+          <p>A reflection on moving risk management from a compliance exercise to an active delivery leadership practice.</p>
+          <div class="article-tags">
+            <span class="article-tag">Risk Management</span>
+            <span class="article-tag">Project Success</span>
+            <span class="article-tag">Governance</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Group 2 -->
+    <div class="article-group">
+      <div class="article-group-title">Planning, Metrics &amp; Execution</div>
+      <div class="article-group-grid">
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/planning-does-make-delivery-certain-makes-more-julio-gulias-env5c?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Planning Does Not Make Delivery Certain. It Makes Delivery More Predictable.</h2>
+          <p>Why planning is not about pretending certainty exists, but about making uncertainty visible, manageable, and easier to communicate.</p>
+          <div class="article-tags">
+            <span class="article-tag">Project Planning</span>
+            <span class="article-tag">Predictability</span>
+            <span class="article-tag">Transparency</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/fuel-gauge-does-drive-car-julio-gulias-xnscc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>The Fuel Gauge Does Not Drive the Car</h2>
+          <p>A reflection on why metrics matter, but leadership decisions, ownership, and action still move delivery forward.</p>
+          <div class="article-tags">
+            <span class="article-tag">Metrics</span>
+            <span class="article-tag">Execution</span>
+            <span class="article-tag">Leadership</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/reclaim-your-thinking-autonomy-critical-julio-gulias-i3h0c?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Reclaim Your Thinking Autonomy with Critical Thinking</h2>
+          <p>A reminder that tools, frameworks, and AI should support judgment, not replace the responsibility to think.</p>
+          <div class="article-tags">
+            <span class="article-tag">Critical Thinking</span>
+            <span class="article-tag">Leadership</span>
+            <span class="article-tag">Judgment</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Group 3 -->
+    <div class="article-group">
+      <div class="article-group-title">Career Strategy &amp; Job Search</div>
+      <div class="article-group-grid">
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/project-managing-your-job-search-tools-tips-julio-gulias-raijc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Project Managing Your Job Search: Tools, Tips, and Inspiration</h2>
+          <p>Applying project management thinking to the job search through goals, tools, routines, and practical structure.</p>
+          <div class="article-tags">
+            <span class="article-tag">Job Search</span>
+            <span class="article-tag">Project Management</span>
+            <span class="article-tag">Career Strategy</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/knowing-yourself-exploring-julio-gulias-2bikc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Knowing Yourself and Exploring It</h2>
+          <p>Using SWOT analysis and personal strategy to understand strengths, gaps, opportunities, and threats in the job search.</p>
+          <div class="article-tags">
+            <span class="article-tag">Self-Assessment</span>
+            <span class="article-tag">SWOT</span>
+            <span class="article-tag">Career Planning</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/transforming-challenges-triumphs-lessons-from-job-search-julio-gulias-1q7hc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>Transforming Challenges into Triumphs: Lessons from the Job Search Journey</h2>
+          <p>Reflections on resilience, learning, and finding momentum during a difficult career transition.</p>
+          <div class="article-tags">
+            <span class="article-tag">Resilience</span>
+            <span class="article-tag">Career Transition</span>
+            <span class="article-tag">Job Search</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+        <a class="article-card compact" href="https://www.linkedin.com/pulse/search-spring-understanding-job-markets-winter-sleep-julio-gulias-u2jyc?trackingId=dX5A3mc%2BRUSQwRJKooezOw%3D%3D" target="_blank" rel="noopener noreferrer">
+          <h2>In Search of Spring: Understanding the Job Market's Winter Sleep</h2>
+          <p>A reflection on layoffs, recruiter silence, market uncertainty, and the emotional reality of searching for work during a cold hiring market.</p>
+          <div class="article-tags">
+            <span class="article-tag">Job Market</span>
+            <span class="article-tag">Career Resilience</span>
+            <span class="article-tag">Job Search</span>
+          </div>
+          <span class="article-link">Read on LinkedIn <span aria-hidden="true">↗</span></span>
+        </a>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── Bottom CTA ── -->
+  <div style="max-width:1180px;margin:0 auto;padding:0 32px 64px;">
+    <div class="article-cta">
+      <p>Ideas are easier to trust when they survive real delivery work.</p>
+      <p>These articles reflect lessons shaped by software, infrastructure, cybersecurity, professional services, and career-transition experiences.</p>
+      <p>If these ideas resonate with the challenges your team is facing, let's connect.</p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="index.html#contact">Contact Me</a>
+        <a class="btn-ghost" href="https://www.linkedin.com/in/julio-cesar-gulias/recent-activity/articles/" target="_blank" rel="noopener noreferrer">
+          View LinkedIn Articles <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Julio Gulias · Built with plain HTML · Hosted on GitHub Pages</p>
+</footer>
+
 </body>
 </html>
