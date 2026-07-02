@@ -443,11 +443,94 @@
       .role-years { text-align: left; }
       .metrics-strip { gap: 1.25rem; }
     }
+  
+    /* ── Mobile hamburger ── */
+    .nav-toggle { display: none; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 1100;
+    }
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-toggle:checked ~ .site-header .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle:checked ~ .site-header .nav-hamburger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .site-header .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,29,47,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .nav-toggle:checked ~ .mobile-nav { display: flex; }
+    .mobile-nav a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      text-align: center;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--teal); }
+    .mobile-nav .mobile-sub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid rgba(0,196,179,0.2);
+      padding-top: 1.5rem;
+      width: 100%;
+    }
+    .mobile-nav .mobile-sub a {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .mobile-nav .mobile-sub a:hover { color: var(--teal); }
+    .mobile-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    @media(max-width:768px){
+      .main-nav{display:none}
+      .nav-hamburger{display:flex}
+      .site-header{padding:16px 22px}
+    }
   </style>
 </head>
 <body>
 
 <!-- ── HEADER / NAV ── -->
+
+<!-- Mobile nav toggle (CSS-only) -->
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
 <header class="site-header">
   <a class="brand" href="index.html#home">
     <span class="brand-name">Julio Gulias</span>
@@ -471,7 +554,25 @@
     </div>
     <a href="index.html#contact">Contact</a>
   </nav>
+  <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </label>
 </header>
+<!-- Mobile full-screen nav -->
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <label for="nav-toggle" class="mobile-close" aria-label="Close menu">✕</label>
+  <a href="index.html#home" onclick="document.getElementById('nav-toggle').checked=false">Home</a>
+  <a href="index.html#experience" onclick="document.getElementById('nav-toggle').checked=false">Experience</a>
+  <a href="index.html#strengths" onclick="document.getElementById('nav-toggle').checked=false">Strengths</a>
+  <a href="index.html#about" onclick="document.getElementById('nav-toggle').checked=false">About</a>
+  <a href="recommendations.html">Recommendations</a>
+  <a href="index.html#contact" onclick="document.getElementById('nav-toggle').checked=false">Contact</a>
+  <div class="mobile-sub">
+    <a href="training.html">Training &amp; Certifications</a>
+    <a href="articles.html">Articles</a>
+    <a href="volunteering.html">Volunteering</a>
+  </div>
+</nav>
 
 <!-- ── PAGE HEADER ── -->
 <div class="page-header">
