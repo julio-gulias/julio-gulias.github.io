@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Training & Certifications | Julio Gulias</title>
+  <title>Recommendations | Julio Gulias</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -15,12 +15,14 @@
       --navy-card: #1C3050;
       --steel:     #4A6580;
       --teal:      #00C4B3;
+      --teal-dim:  rgba(0,196,179,0.10);
+      --amber:     #F59E0B;
       --off-white: #F0EDE6;
       --muted:     #8FA3B8;
       --white:     #FFFFFF;
+      --max:       1100px;
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Inter', system-ui, sans-serif;
-      --font-serif:   'Playfair Display', Georgia, serif;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -33,7 +35,7 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Site Header & Nav ── */
+    /* ── Site Header ── */
     .site-header {
       position: sticky; top: 0; z-index: 1000;
       display: flex; justify-content: space-between; align-items: center;
@@ -44,7 +46,7 @@
     }
     .brand { text-decoration: none; color: var(--white); display: flex; flex-direction: column; line-height: 1.1; }
     .brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; }
-    .brand-subtitle { margin-top: 4px; font-size: 0.8rem; color: var(--steel); }
+    .brand-subtitle { margin-top: 4px; font-size: 0.8rem; color: var(--muted); }
     .main-nav { display: flex; align-items: center; gap: 32px; }
     .main-nav a, .nav-dropdown-toggle {
       color: var(--muted); text-decoration: none; text-transform: uppercase;
@@ -53,7 +55,7 @@
       padding: 0; transition: color 0.2s;
     }
     .main-nav a:hover, .nav-dropdown-toggle:hover { color: var(--teal); }
-    .main-nav a.active, .nav-dropdown-toggle.active { color: var(--teal); }
+    .main-nav a.active { color: var(--teal); }
     .nav-dropdown { position: relative; }
     .nav-dropdown-menu {
       display: none; position: absolute; top: 32px; right: 0;
@@ -67,238 +69,209 @@
       font-size: 0.75rem; font-weight: 700; color: var(--muted); white-space: nowrap;
     }
     .nav-dropdown-menu a:hover { background: rgba(0,196,179,0.08); color: var(--teal); }
-    .nav-dropdown-menu a.active { color: var(--teal); }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
     @media (max-width: 768px) { .main-nav { display: none; } }
 
-    /* ── Shared kicker style ── */
-    .page-kicker, .section-kicker {
-      color: #10cfc0;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 24px;
-    }
-    .page-kicker::after, .section-kicker::after {
-      content: "";
-      display: block;
-      width: 52px;
-      height: 2px;
-      margin-top: 16px;
-      background: #10cfc0;
-    }
-    .accent-dot { color: #10cfc0; }
-
-    /* ================================
-       Training & Certifications Page
-    ================================ */
-
-    .training-hero {
-      max-width: 1180px;
+    /* ── Hero ── */
+    .recommendations-hero {
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 96px 32px 48px;
+      padding: 4rem 2rem 3rem;
     }
-    .training-hero h1 {
-      max-width: 760px;
-      margin: 0 0 28px;
-      font-family: var(--font-serif);
-      font-size: clamp(3.2rem, 7vw, 6.2rem);
-      line-height: 0.95;
-      color: #ffffff;
+    .page-kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2rem;
     }
-    .training-hero p {
-      max-width: 620px;
-      margin: 0;
-      color: #9fb8d3;
-      font-size: 1.15rem;
-      line-height: 1.7;
+    .recommendations-hero-content {
+      max-width: 820px;
+    }
+    .recommendations-hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .accent-dot { color: var(--teal); }
+    .recommendations-hero-content p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 0.75rem;
     }
 
-    .training-section {
+    /* Additional Voices section */
+    .additional-recommendations {
       max-width: 1180px;
       margin: 0 auto;
       padding: 24px 32px 40px;
     }
+    .recommendation-grid.compact .recommendation-card {
+      min-height: 360px;
+    }
 
-    .credential-grid {
+    /* ── Divider ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0,196,179,0.15), transparent);
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── Selected Recommendations ── */
+    .selected-recommendations {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+    .section-kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2rem;
+    }
+    .recommendation-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
     }
 
-    .credential-card,
-    .development-card,
-    .education-list,
-    .linkedin-training-cta {
-      border: 1px solid rgba(159,184,211,0.18);
-      background: rgba(24,48,77,0.42);
-      box-shadow: 0 18px 48px rgba(0,0,0,0.16);
-    }
-
-    .credential-card {
-      border-radius: 12px;
-      padding: 24px;
-      min-height: 310px;
+    /* Card */
+    .recommendation-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 1.6rem;
       display: flex;
       flex-direction: column;
+      gap: 1.1rem;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .credential-header {
+    .recommendation-card:hover {
+      border-color: rgba(0,196,179,0.28);
+      transform: translateY(-2px);
+    }
+    .recommendation-header {
       display: flex;
-      gap: 16px;
       align-items: flex-start;
-      margin-bottom: 24px;
+      gap: 0.9rem;
     }
-    .credential-logo {
-      width: 56px; height: 56px; flex: 0 0 56px;
-      border-radius: 8px;
-      display: grid; place-items: center;
-      background: #ffffff;
-      color: #061724;
-      font-size: 0.72rem; font-weight: 900; letter-spacing: 0.03em;
-    }
-    .credential-card h2 {
-      margin: 0 0 6px; color: #ffffff;
-      font-size: 1.05rem; line-height: 1.35;
-    }
-    .credential-card > .credential-header > div > p {
-      margin: 0; color: #10cfc0;
-      font-size: 0.9rem; line-height: 1.45;
-    }
-    .credential-meta {
-      list-style: none; padding: 0 0 20px;
-      margin: 0 0 20px;
-      border-bottom: 1px solid rgba(159,184,211,0.22);
-    }
-    .credential-meta li {
-      color: #9fb8d3; font-size: 0.9rem; margin-bottom: 8px;
-    }
-    .credential-meta li::before {
-      content: "▣"; color: #10cfc0;
-      font-size: 0.7rem; margin-right: 10px;
-    }
-    .credential-card .credential-skills {
-      margin-top: auto; color: #d6e4f2;
-      font-size: 0.9rem; line-height: 1.55;
-    }
-    .credential-skills strong, .education-skills strong { color: #ffffff; }
-
-    .education-list { border-radius: 12px; overflow: hidden; }
-    .education-item {
-      display: grid;
-      grid-template-columns: 72px 1fr auto;
-      gap: 24px; align-items: center; padding: 26px;
-    }
-    .education-item + .education-item {
-      border-top: 1px solid rgba(159,184,211,0.16);
-    }
-    .education-logo {
-      width: 64px; height: 64px; border-radius: 8px;
-      display: grid; place-items: center;
-      background: #174ce3; color: #ffffff;
-      font-weight: 800; font-size: 0.9rem;
-    }
-    .education-logo.muted { background: rgba(255,255,255,0.9); color: #061724; }
-    .education-content h2 { margin: 0 0 6px; color: #ffffff; font-size: 1.1rem; }
-    .education-content p { margin: 0 0 8px; color: #10cfc0; line-height: 1.5; }
-    .education-content .education-skills {
-      color: #d6e4f2; font-size: 0.9rem; margin-bottom: 0;
-    }
-    .education-item-no-date {
-      grid-template-columns: 72px 1fr;
-    }
-    .education-description {
-      color: #d6e4f2 !important;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      max-width: 760px;
-    }
-    .education-date {
-      color: #9fb8d3; font-size: 0.9rem;
-      text-align: right; line-height: 1.45; white-space: nowrap;
-    }
-
-    .development-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
-    }
-    .development-card {
-      border-radius: 12px; padding: 28px;
-      display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 22px; align-items: start;
-    }
-    .development-icon {
-      width: 58px; height: 58px;
-      border: 1px solid #10cfc0; color: #10cfc0;
+    .avatar {
+      width: 52px; height: 52px;
       border-radius: 50%;
-      display: grid; place-items: center;
-      font-size: 1.5rem;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid rgba(0,196,179,0.3);
+      display: block;
     }
-    .development-card h2 {
-      margin: 0 0 14px; color: #ffffff;
-      font-size: 1.25rem; line-height: 1.35;
+    .recommendation-header h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.15rem;
     }
-    .development-card ul {
-      margin: 0; padding-left: 18px;
-      color: #d6e4f2; line-height: 1.65;
+    .person-title {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.3;
     }
-    .development-card li::marker { color: #10cfc0; }
+    .company {
+      font-size: 0.75rem;
+      color: var(--amber);
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+    .recommendation-card blockquote {
+      border: none;
+      padding: 0;
+      flex: 1;
+    }
+    .recommendation-card blockquote p {
+      font-size: 0.88rem;
+      color: var(--off-white);
+      line-height: 1.72;
+      font-style: italic;
+    }
+    .recommendation-card blockquote p + p { margin-top: 0.6rem; }
+    .recommendation-card footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.72rem;
+      color: var(--steel);
+      background: none;
+    }
 
-    .linkedin-training-cta {
-      max-width: 1180px;
-      margin: 0 auto 32px;
-      padding: 28px 32px;
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 24px; align-items: center;
-      border-radius: 14px;
+    /* ── More Recommendations CTA ── */
+    .more-recommendations {
+      background: var(--navy-mid);
+      max-width: var(--max);
+      margin: 0 auto 4rem;
+      border-radius: 12px;
+      border: 1px solid rgba(0,196,179,0.12);
+      padding: 2.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
-    .linkedin-cta-icon {
-      width: 72px; height: 72px;
-      border: 1px solid #10cfc0; border-radius: 50%;
-      display: grid; place-items: center;
-      color: #10cfc0; font-size: 2rem;
+    .more-recommendations-icon { font-size: 2rem; flex-shrink: 0; }
+    .more-recommendations > div { flex: 1; min-width: 220px; }
+    .more-recommendations h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
     }
-    .linkedin-training-cta h2 { margin: 0 0 8px; color: #ffffff; font-size: 1.35rem; }
-    .linkedin-training-cta p { margin: 0; color: #9fb8d3; line-height: 1.6; }
-
+    .more-recommendations p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
     .secondary-button {
-      display: inline-flex; align-items: center; justify-content: center;
-      gap: 12px; text-decoration: none; border-radius: 8px;
-      font-weight: 800; letter-spacing: 0.01em;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-      padding: 18px 22px;
-      color: #061724; background: #10cfc0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--off-white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 0.75rem 1.4rem;
+      border-radius: 6px;
+      border: 1px solid rgba(240,237,230,0.25);
       white-space: nowrap;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      flex-shrink: 0;
     }
-    .secondary-button:hover { transform: translateY(-2px); }
+    .secondary-button:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
 
     /* ── Footer ── */
     .site-footer {
-      max-width: 1180px; margin: 0 auto;
-      padding: 32px;
-      border-top: 1px solid rgba(159,184,211,0.14);
-      color: #7190af; text-align: center;
+      background: var(--navy);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
+    .site-footer p { font-size: 0.75rem; color: var(--steel); }
 
-    /* ================================
-       Training Page Responsive
-    ================================ */
-    @media (max-width: 1100px) {
-      .credential-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
-    @media (max-width: 780px) {
-      .training-hero { padding: 72px 22px 36px; }
-      .training-section { padding: 20px 22px 32px; }
-      .credential-grid, .development-grid { grid-template-columns: 1fr; }
-      .education-item { grid-template-columns: 1fr; gap: 14px; }
-      .education-date { text-align: left; }
-      .development-card { grid-template-columns: 1fr; }
-      .linkedin-training-cta { margin: 0 22px 32px; padding: 24px; grid-template-columns: 1fr; }
-      .linkedin-training-cta .secondary-button { width: 100%; }
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .recommendation-grid { grid-template-columns: 1fr; }
+      .more-recommendations { flex-direction: column; gap: 1.25rem; }
+      .additional-recommendations { padding: 16px 22px 32px; }
     }
   </style>
 </head>
@@ -314,13 +287,13 @@
     <a href="index.html#experience">Experience</a>
     <a href="index.html#strengths">Strengths</a>
     <a href="index.html#about">About</a>
-    <a href="recommendations.html">Recommendations</a>
+    <a href="recommendations.html" class="active">Recommendations</a>
     <div class="nav-dropdown">
-      <button class="nav-dropdown-toggle active" type="button">
+      <button class="nav-dropdown-toggle" type="button">
         More <span aria-hidden="true">▾</span>
       </button>
       <div class="nav-dropdown-menu">
-        <a href="training.html" class="active">Training &amp; Certifications</a>
+        <a href="training.html">Training &amp; Certifications</a>
         <a href="articles.html">Articles</a>
         <a href="volunteering.html">Volunteering</a>
       </div>
@@ -332,182 +305,239 @@
 <main>
 
   <!-- ── Hero ── -->
-  <section class="training-hero">
-    <div class="page-kicker">Training &amp; Certifications</div>
-    <h1>Learning that builds better outcomes<span class="accent-dot">.</span></h1>
-    <p>Formal credentials and continuous learning that support my work in project delivery, agile teams, professional services, and people leadership.</p>
+  <section class="recommendations-hero">
+    <div class="page-kicker">Recommendations</div>
+    <div class="recommendations-hero-content">
+      <h1>What people say about working with me<span class="accent-dot">.</span></h1>
+      <p>I'm grateful for the recommendations I've received from managers, peers, clients, and team members throughout my career.</p>
+      <p>For this page, I've selected a few that best reflect the kind of work I'm focused on today: delivery leadership, professional services, stakeholder alignment, and building healthy teams.</p>
+    </div>
   </section>
 
-  <!-- ── Featured Credentials ── -->
-  <section class="training-section">
-    <div class="section-kicker">Featured Credentials</div>
-    <div class="credential-grid">
+  <div class="divider"></div>
 
-      <article class="credential-card">
-        <div class="credential-header">
-          <div class="credential-logo">PMI</div>
+  <!-- ── Selected Recommendations ── -->
+  <section class="selected-recommendations">
+    <div class="section-kicker">Selected Recommendations</div>
+    <div class="recommendation-grid">
+
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/paula-amador.png" alt="Paula Amador Cardona">
           <div>
-            <h2>Project Management Professional — PMP</h2>
-            <p>Project Management Institute</p>
+            <h3>Paula Amador Cardona</h3>
+            <p class="person-title">Product &amp; Operations Executive</p>
+            <p class="company">Backbone</p>
           </div>
         </div>
-        <ul class="credential-meta">
-          <li>Issued Jun 2013</li>
-          <li>Expires Jun 2028</li>
-          <li>Credential ID #1625866</li>
-        </ul>
-        <p class="credential-skills"><strong>Skills:</strong> Stakeholder Engagement, Agile Methodologies, Risk Management, Project Delivery</p>
+        <blockquote>
+          <p>"One of the most reliable and well-rounded operators I've worked with.</p>
+          <p>Julio brings a rare combination of professionalism, structure, and calm execution. He brings order to ambiguity while maintaining a positive, collaborative attitude."</p>
+        </blockquote>
+        <footer>
+          <span>March 21, 2026</span>
+          <span>Managed Julio directly</span>
+        </footer>
       </article>
 
-      <article class="credential-card">
-        <div class="credential-header">
-          <div class="credential-logo">PSM</div>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/daniel-lievano.png" alt="Daniel Lievano">
           <div>
-            <h2>Professional Scrum Master I — PSM I</h2>
-            <p>Scrum.org</p>
+            <h3>Daniel Lievano</h3>
+            <p class="person-title">Senior Software Engineer</p>
+            <p class="company">Backbone</p>
           </div>
         </div>
-        <ul class="credential-meta">
-          <li>Issued Jun 2018</li>
-        </ul>
-        <p class="credential-skills"><strong>Skills:</strong> Scrum, Agile Delivery, Team Leadership, Product Delivery</p>
+        <blockquote>
+          <p>"An excellent delivery leader.</p>
+          <p>He organizes complex work, keeps teams aligned, and maintains clear communication with stakeholders throughout the project lifecycle. He brings structure, follow-through, and calm leadership that makes a real difference."</p>
+        </blockquote>
+        <footer>
+          <span>April 8, 2026</span>
+          <span>Reported to Julio</span>
+        </footer>
       </article>
 
-      <article class="credential-card">
-        <div class="credential-header">
-          <div class="credential-logo">UofA</div>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/eduardo-azeredo.png" alt="Eduardo Azeredo">
           <div>
-            <h2>Software Product Management Specialization</h2>
-            <p>University of Alberta</p>
+            <h3>Eduardo Azeredo</h3>
+            <p class="person-title">Program &amp; Project Manager</p>
+            <p class="company">Backbone</p>
           </div>
         </div>
-        <ul class="credential-meta">
-          <li>2020 – 2021</li>
-        </ul>
-        <p class="credential-skills"><strong>Skills:</strong> Product Management, SDLC, Requirements, Planning, Agile Practices</p>
+        <blockquote>
+          <p>"A strong professional services and project manager.</p>
+          <p>His ability to handle multiple demands and stay centered while being pulled in multiple directions made him a thoughtful and inspirational leader."</p>
+        </blockquote>
+        <footer>
+          <span>April 9, 2026</span>
+          <span>Reported to Julio</span>
+        </footer>
       </article>
 
-      <article class="credential-card">
-        <div class="credential-header">
-          <div class="credential-logo">IAC</div>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/jeffrey-young.png" alt="Jeffrey Young">
           <div>
-            <h2>Transformational Coach — CTC</h2>
-            <p>International Association of Coaching</p>
+            <h3>Jeffrey Young</h3>
+            <p class="person-title">Lead Engagement Manager</p>
+            <p class="company">Liferay</p>
           </div>
         </div>
-        <ul class="credential-meta">
-          <li>Issued Oct 2016</li>
-        </ul>
-        <p class="credential-skills"><strong>Skills:</strong> Coaching, Team Leadership, Communication, People Development</p>
+        <blockquote>
+          <p>"Focused, driven, and enthusiastic about the work.</p>
+          <p>Julio always came prepared, contributed every day, and was hungry to learn. His commitment to excellence and care for teammates make him a wonderful addition to any organization."</p>
+        </blockquote>
+        <footer>
+          <span>February 5, 2024</span>
+          <span>Managed Julio directly</span>
+        </footer>
+      </article>
+
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/abdullah-bushnaq.png" alt="Abdullah Bushnaq">
+          <div>
+            <h3>Abdullah Bushnaq</h3>
+            <p class="person-title">Director, Global Services</p>
+            <p class="company">Liferay</p>
+          </div>
+        </div>
+        <blockquote>
+          <p>"He focused on how to address challenges while balancing customer needs, team needs, and expectations based on agreements.</p>
+          <p>He brings enthusiasm, a thirst for knowledge, and a desire for continuous improvement every day."</p>
+        </blockquote>
+        <footer>
+          <span>January 30, 2024</span>
+          <span>Senior to Julio</span>
+        </footer>
+      </article>
+
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/andre-fabbro.png" alt="André Fabbro">
+          <div>
+            <h3>André Fabbro</h3>
+            <p class="person-title">Senior Principal Consultant</p>
+            <p class="company">Liferay</p>
+          </div>
+        </div>
+        <blockquote>
+          <p>"Exceptional professional.</p>
+          <p>His innovative approach to risk management and accurate foresight allowed us to anticipate and prepare effective solutions for challenges that indeed materialized."</p>
+        </blockquote>
+        <footer>
+          <span>January 31, 2024</span>
+          <span>Worked with Julio</span>
+        </footer>
       </article>
 
     </div>
   </section>
 
-  <!-- ── Formal Education ── -->
-  <section class="training-section">
-    <div class="section-kicker">Formal Education</div>
-    <div class="education-list">
+  <!-- ── Additional Voices ── -->
+  <section class="additional-recommendations">
+    <div class="section-kicker">Additional Voices</div>
+    <div class="recommendation-grid compact">
 
-      <article class="education-item education-item-no-date">
-        <div class="education-logo">PUCRS</div>
-        <div class="education-content">
-          <h2>Pontifícia Universidade Católica do Rio Grande do Sul — PUCRS</h2>
-          <p>Bachelor of Engineering — Electronic Engineering</p>
-          <p class="education-description">Engineering foundation that shaped my analytical approach to complex systems, technical problem-solving, and technology delivery.</p>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/bernardo-berra.png" alt="Bernardo Berra">
+          <div>
+            <h3>Bernardo Berra</h3>
+            <p class="person-title">Senior Full Stack Developer</p>
+            <p class="company">Former direct report</p>
+          </div>
         </div>
+        <blockquote>
+          <p>"Julio is a great coach, people development is priority to him. He is highly empathic and believes in the best skills of each person."</p>
+          <p>"A great environment to work, based on trust and respect, was built. Employee turnover was substantially reduced through his work."</p>
+        </blockquote>
+        <footer>
+          <span>April 21, 2015</span>
+          <span>Reported to Julio</span>
+        </footer>
       </article>
 
-      <article class="education-item education-item-no-date">
-        <div class="education-logo muted">PA</div>
-        <div class="education-content">
-          <h2>Additional Education</h2>
-          <p>Technical Accounting — Protasio Alves College</p>
-          <p class="education-description">Business foundation in accounting principles, financial management, and operations.</p>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/josiane-arruda.png" alt="Josiane Arruda">
+          <div>
+            <h3>Josiane Arruda</h3>
+            <p class="person-title">Senior Manager | Technology Consulting</p>
+            <p class="company">Former direct manager</p>
+          </div>
         </div>
+        <blockquote>
+          <p>"Julio is a distinguished professional in project management for his great ability to manage people."</p>
+          <p>"Very organized and committed to results, he seeks excellence while reconciling organizational policies, client expectations, and the well-being of his team."</p>
+        </blockquote>
+        <footer>
+          <span>May 15, 2018</span>
+          <span>Managed Julio directly</span>
+        </footer>
       </article>
 
-    </div>
-  </section>
-
-  <!-- ── Professional Development ── -->
-  <section class="training-section">
-    <div class="section-kicker">Selected Professional Development</div>
-    <div class="development-grid">
-
-      <article class="development-card">
-        <div class="development-icon">⌁</div>
-        <div>
-          <h2>Agile Delivery &amp; Product Practices</h2>
-          <ul>
-            <li>Agile Coach Professional — Adaptworks</li>
-            <li>Agile Project Management with Scrum — PMTech</li>
-            <li>Agile Requirements — Adaptworks</li>
-            <li>Learning Shot: The Role of Scrum Master after 20 Years of Scrum — Adaptworks</li>
-            <li>Management 3.0 — Adaptworks</li>
-            <li>Leading SAFe 4.0 Course — Adaptworks</li>
-          </ul>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/mauro-lopreste.png" alt="Mauro Lopreste">
+          <div>
+            <h3>Mauro Lopreste</h3>
+            <p class="person-title">Senior Full Stack Engineer</p>
+            <p class="company">Backbone</p>
+          </div>
         </div>
+        <blockquote>
+          <p>"Julio has been a great inspiration to me. His patience, strong commitment, and ability to keep the team aligned and focused made a real difference throughout the project."</p>
+          <p>"He creates a positive and collaborative environment, always taking the time to support the team and help others grow."</p>
+        </blockquote>
+        <footer>
+          <span>March 18, 2026</span>
+          <span>Reported to Julio</span>
+        </footer>
       </article>
 
-      <article class="development-card">
-        <div class="development-icon">◎</div>
-        <div>
-          <h2>Leadership, Communication &amp; Team Development</h2>
-          <ul>
-            <li>Giftwork — Training for Managers</li>
-            <li>Habitudes — Leading Young People for Leadership</li>
-            <li>Individual Differences and Feedback — GrowUp Ciência em Gestão</li>
-            <li>Interview Techniques for Managers — ABRH-RS</li>
-            <li>Leader Communicator — ABRH-RS</li>
-            <li>Career Direct — YES! Youth Exploration Survey</li>
-          </ul>
+      <article class="recommendation-card">
+        <div class="recommendation-header">
+          <img class="avatar" src="img/robin-pagano.png" alt="Robin Pagano">
+          <div>
+            <h3>Robin Pagano</h3>
+            <p class="person-title">Consultant, Mentor &amp; Business Educator</p>
+            <p class="company">Former direct manager</p>
+          </div>
         </div>
-      </article>
-
-      <article class="development-card">
-        <div class="development-icon">⚙</div>
-        <div>
-          <h2>Process, Operations &amp; Readiness</h2>
-          <ul>
-            <li>Process Modelling with BPMN</li>
-            <li>Incident Command / Incident Management System Level 1</li>
-            <li>Emergency First Aid for Industry — OFA Level 1 Equivalent</li>
-            <li>Fire Safety Training — Firefighter School, RS</li>
-          </ul>
-        </div>
-      </article>
-
-      <article class="development-card">
-        <div class="development-icon">✦</div>
-        <div>
-          <h2>Business &amp; Creative Management</h2>
-          <ul>
-            <li>Creative Project Management: Methodology and Process — PUCRS</li>
-            <li>Relationship with the Market — USEN / Sebrae Business University</li>
-          </ul>
-        </div>
+        <blockquote>
+          <p>"Julio is a creative person, constantly developing his skills, focused on superior quality, and oriented toward goals and deadlines negotiated with clients."</p>
+          <p>"He has initiative and takes decisions according to client needs. He is a professional that makes it happen."</p>
+        </blockquote>
+        <footer>
+          <span>May 14, 2018</span>
+          <span>Managed Julio directly</span>
+        </footer>
       </article>
 
     </div>
   </section>
 
-  <!-- ── LinkedIn CTA ── -->
-  <section class="linkedin-training-cta">
-    <div class="linkedin-cta-icon">◎</div>
+  <!-- ── More CTA ── -->
+  <section class="more-recommendations">
+    <div class="more-recommendations-icon">👥</div>
     <div>
-      <h2>Curious to see more?</h2>
-      <p>You can view my full education history, certifications, and completed courses on LinkedIn.</p>
+      <h2>Many more voices, same story.</h2>
+      <p>These are selected excerpts. Additional recommendations from earlier roles, clients, managers, peers, and collaborators are available on LinkedIn.</p>
     </div>
-    <a class="secondary-button" href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener noreferrer">
-      View full on LinkedIn <span aria-hidden="true">↗</span>
+    <a class="secondary-button" href="https://www.linkedin.com/in/julio-cesar-gulias/details/recommendations/" target="_blank" rel="noopener noreferrer">
+      View full LinkedIn recommendations <span aria-hidden="true">↗</span>
     </a>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>© 2026 Julio Gulias · Built with plain HTML · Hosted on GitHub Pages</p>
+  <p>© 2026 Julio Gulias &nbsp;·&nbsp; Built with plain HTML &nbsp;·&nbsp; Hosted on GitHub Pages</p>
 </footer>
 
 </body>
