@@ -146,6 +146,53 @@
       width: 100%;
       position: relative;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-text { min-width: 0; }
+    .hero-portrait {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .hero-portrait-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 60%, rgba(0,196,179,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-portrait img {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      border-radius: 12px;
+      display: block;
+      -webkit-mask-image:
+        linear-gradient(to bottom, black 60%, transparent 100%),
+        linear-gradient(to left, black 70%, transparent 100%),
+        linear-gradient(to right, black 85%, transparent 100%);
+      -webkit-mask-composite: destination-in;
+      mask-image:
+        linear-gradient(to bottom, black 60%, transparent 100%),
+        linear-gradient(to left, black 70%, transparent 100%),
+        linear-gradient(to right, black 85%, transparent 100%);
+      mask-composite: intersect;
+      filter: brightness(0.95) contrast(0.97);
+    }
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-label { display: inline-block; }
+      .hero-stats { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .hero-portrait { order: 3; margin-top: 1.5rem; }
+      .hero-portrait img { max-width: 220px; }
     }
     .hero-label {
       display: inline-block;
@@ -754,38 +801,44 @@
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-label">Available for new opportunities</div>
-    <h1>Delivering complex<br>projects<em>.</em> Building<br>great teams<em>.</em></h1>
-    <p class="hero-sub">Senior Project, Program &amp; Delivery Manager with 15+ years helping organizations bring structure to ambiguity, align stakeholders, and deliver complex software, infrastructure, cybersecurity, and professional services initiatives.</p>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">15+</span>
-        <span class="stat-label">Years of Experience</span>
+    <div class="hero-text">
+      <div class="hero-label">Available for new opportunities</div>
+      <h1>Delivering complex<br>projects<em>.</em> Building<br>great teams<em>.</em></h1>
+      <p class="hero-sub">Senior Project, Program &amp; Delivery Manager with 15+ years helping organizations bring structure to ambiguity, align stakeholders, and deliver complex software, infrastructure, cybersecurity, and professional services initiatives.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">15+</span>
+          <span class="stat-label">Years of Experience</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Continents Served</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">Fortune 500</span>
+          <span class="stat-label">Clients Supported</span>
+        </div>
       </div>
-      <div class="stat">
-        <span class="stat-num">100+</span>
-        <span class="stat-label">Projects Delivered</span>
+      <div class="hero-ctas">
+        <a class="hero-cta hero-cta--primary" href="assets/julio-gulias-resume.pdf" target="_blank" rel="noopener noreferrer">
+          View resume
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="hero-cta hero-cta--ghost" href="#experience">
+          View career highlights
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
-      <div class="stat">
-        <span class="stat-num">4</span>
-        <span class="stat-label">Continents Served</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">Fortune 500</span>
-        <span class="stat-label">Clients Supported</span>
-      </div>
+      <p style="margin-top:1rem;font-size:0.75rem;color:var(--muted);letter-spacing:0.04em;">PDF résumé · Opens in a new tab</p>
     </div>
-    <div class="hero-ctas">
-      <a class="hero-cta hero-cta--primary" href="assets/julio-gulias-resume.pdf" target="_blank" rel="noopener noreferrer">
-        View resume
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a class="hero-cta hero-cta--ghost" href="#experience">
-        View career highlights
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+    <div class="hero-portrait">
+      <div class="hero-portrait-glow"></div>
+      <img src="img/julio-gulias-hero.png" alt="Julio Gulias — Project and Delivery Leadership professional" />
     </div>
-    <p style="margin-top:1rem;font-size:0.75rem;color:var(--muted);letter-spacing:0.04em;">PDF résumé · Opens in a new tab</p>
   </div>
 </section>
 
