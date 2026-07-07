@@ -307,6 +307,57 @@
     /* ── Timeline ── */
     #experience { background: var(--navy-mid); }
 
+    /* ── Professional Snapshot ── */
+    #snapshot {
+      background: var(--navy-mid);
+      padding: 3rem 2rem;
+    }
+    .snapshot-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .snapshot-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.9rem;
+    }
+    .snapshot-copy {
+      font-size: 1rem;
+      color: var(--off-white);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 760px;
+      margin-bottom: 1.5rem;
+    }
+    .snapshot-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .snapshot-tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid rgba(240,237,230,0.18);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius);
+    }
+    .snapshot-tag--cert {
+      color: var(--navy);
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+    @media (max-width: 640px) {
+      #snapshot { padding: 2.25rem 2rem; }
+      .snapshot-tag { font-size: 0.74rem; padding: 0.35rem 0.75rem; }
+    }
+
     /* ── How I Can Help ── */
     #how-i-help { background: var(--navy-mid); }
     .help-intro {
@@ -411,6 +462,41 @@
     }
     @media (max-width: 768px) {
       .impact-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Target Opportunities ── */
+    #target-opportunities { background: var(--navy-mid); }
+    .target-intro {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      max-width: 700px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+    .role-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+    .role-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--off-white);
+      background: var(--navy-card);
+      border: 1px solid rgba(0,196,179,0.3);
+      padding: 0.6rem 1.1rem;
+      border-radius: var(--radius);
+    }
+    .target-support {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 640px;
+      line-height: 1.65;
+    }
+    @media (max-width: 640px) {
+      .role-tag { font-size: 0.8rem; padding: 0.5rem 0.9rem; }
     }
 
     .timeline { position: relative; }
@@ -544,6 +630,7 @@
     }
     .timeline-entry--transition .tl-positioning {
       margin-bottom: 0;
+      color: var(--muted);
     }
 
     /* ── Timeline mobile reflow ──
@@ -639,6 +726,66 @@
     }
     .sidebar-block ul { padding-left: 1rem; }
     .sidebar-block li { margin-bottom: 0.25rem; }
+
+    /* ── What Colleagues Say ── */
+    #recommendations-preview { background: var(--navy); }
+    .quotes-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 2.75rem;
+    }
+    .quote-block {
+      position: relative;
+      padding-top: 1.75rem;
+      border-top: 2px solid rgba(0,196,179,0.35);
+    }
+    .quote-mark {
+      font-family: var(--font-display);
+      font-size: 2.75rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .quote-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--off-white);
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
+    }
+    .quote-attribution {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .quote-attribution strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+    .recommendations-cta {
+      display: flex;
+      justify-content: center;
+    }
+    .recommendations-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--teal);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,196,179,0.4);
+      padding-bottom: 0.2rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .recommendations-cta a:hover { border-color: var(--teal); color: #00ddd0; }
+    @media (max-width: 900px) {
+      .quotes-row { grid-template-columns: 1fr; gap: 2.25rem; }
+    }
 
     /* ── Contact / Footer ── */
     #contact {
@@ -765,7 +912,7 @@
     }
     footer p {
       font-size: 0.78rem;
-      color: var(--steel);
+      color: var(--muted);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1017,6 +1164,28 @@
 
 <div class="divider"></div>
 
+<!-- ── PROFESSIONAL SNAPSHOT ── -->
+<section id="snapshot">
+  <div class="snapshot-inner">
+    <div class="snapshot-title">Professional Snapshot</div>
+    <p class="snapshot-copy">PMP-certified project and program delivery leader based in Greater Vancouver, with experience across enterprise software, digital platforms, cloud infrastructure, e-commerce, cybersecurity, and Professional Services operations.</p>
+    <div class="snapshot-tags">
+      <span class="snapshot-tag snapshot-tag--cert">PMP</span>
+      <span class="snapshot-tag snapshot-tag--cert">PSM I</span>
+      <span class="snapshot-tag">Greater Vancouver</span>
+      <span class="snapshot-tag">Enterprise Software</span>
+      <span class="snapshot-tag">Digital Platforms</span>
+      <span class="snapshot-tag">Professional Services</span>
+      <span class="snapshot-tag">Cloud Infrastructure</span>
+      <span class="snapshot-tag">E-commerce</span>
+      <span class="snapshot-tag">Cybersecurity</span>
+      <span class="snapshot-tag">Distributed Teams</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── HOW I CAN HELP ── -->
 <section id="how-i-help">
   <div class="section-inner">
@@ -1096,6 +1265,26 @@
         <p>Coordinated delivery, cutover, and hypercare activities for a complex grocery e-commerce re-platform, helping align client stakeholders, delivery teams, QA, vendors, and executive communication through go-live and post-launch stabilization.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── TARGET OPPORTUNITIES ── -->
+<section id="target-opportunities">
+  <div class="section-inner">
+    <h2>Target Opportunities</h2>
+    <p class="target-intro">I am currently focused on senior project, program, delivery, and Professional Services leadership roles where I can help organizations bring structure, clarity, and execution discipline to complex technology initiatives.</p>
+    <div class="role-tags">
+      <span class="role-tag">Senior Project Manager</span>
+      <span class="role-tag">Program Manager</span>
+      <span class="role-tag">Technical Program Manager</span>
+      <span class="role-tag">Delivery Manager</span>
+      <span class="role-tag">Professional Services Manager / Director</span>
+      <span class="role-tag">Engagement Manager</span>
+      <span class="role-tag">PMO / Delivery Operations</span>
+    </div>
+    <p class="target-support">These roles may sit in technology, digital platforms, enterprise systems, e-commerce, SaaS, consulting, Professional Services, or internal delivery organizations.</p>
   </div>
 </section>
 
@@ -1361,13 +1550,46 @@
 
 <div class="divider"></div>
 
+<!-- ── WHAT COLLEAGUES SAY ── -->
+<section id="recommendations-preview">
+  <div class="section-inner">
+    <div class="section-eyebrow">What Colleagues Say</div>
+    <h2>Trusted by the people I've worked with</h2>
+    <div class="quotes-row">
+      <div class="quote-block reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-text">Julio brings a rare combination of professionalism, structure, and calm execution. He brings order to ambiguity while maintaining a positive, collaborative attitude.</p>
+        <p class="quote-attribution"><strong>Paula Amador Cardona</strong><br>Product &amp; Operations Executive, Backbone</p>
+      </div>
+      <div class="quote-block reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-text">An excellent delivery leader. He organizes complex work, keeps teams aligned, and maintains clear communication with stakeholders throughout the project lifecycle.</p>
+        <p class="quote-attribution"><strong>Daniel Lievano</strong><br>Senior Software Engineer, Backbone</p>
+      </div>
+      <div class="quote-block reveal">
+        <span class="quote-mark">&ldquo;</span>
+        <p class="quote-text">A strong professional services and project manager. His ability to handle multiple demands and stay centered while being pulled in multiple directions made him a thoughtful and inspirational leader.</p>
+        <p class="quote-attribution"><strong>Eduardo Azeredo</strong><br>Program &amp; Project Manager, Backbone</p>
+      </div>
+    </div>
+    <div class="recommendations-cta">
+      <a href="recommendations.html">
+        View More Recommendations
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── CONTACT ── -->
 <section id="contact">
   <div class="section-inner">
     <div class="section-eyebrow">Get in touch</div>
     <div class="eyebrow-rule"></div>
-    <h2>Let's talk</h2>
-    <p class="contact-intro">I'm currently open to new opportunities in project, program, delivery, and professional services leadership. Reach out on LinkedIn or send me a note — <a href="mailto:julio.gulias@gmail.com">I'd be glad to connect.</a></p>
+    <h2>Let's Connect</h2>
+    <p class="contact-intro">I am open to senior project, program, delivery, and Professional Services leadership opportunities in Canada. If my background looks relevant to your team, I would be glad to connect.</p>
     <div class="contact-portrait">
       <img src="img/julio-gulias-contact.jpg" alt="Julio Gulias — Senior Project, Program and Delivery Manager based in Greater Vancouver" />
     </div>
@@ -1376,9 +1598,13 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="3"/><path fill="var(--navy)" d="M7 10h2v7H7zm1-3a1.1 1.1 0 110 2.2A1.1 1.1 0 018 7zm4 3h1.9v1h.05A2.2 2.2 0 0116 9.9c2.1 0 2.5 1.4 2.5 3.2V17h-2v-3.5c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V17H12V10z"/></svg>
         Connect on LinkedIn
       </a>
+      <a class="contact-btn ghost" href="assets/julio-gulias-resume.pdf" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9,15 12,18 15,15"/></svg>
+        View Resume
+      </a>
       <a class="contact-btn ghost" href="mailto:julio.gulias@gmail.com">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Send Email
+        Email Me
       </a>
     </div>
 
