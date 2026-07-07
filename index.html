@@ -532,6 +532,20 @@
       border: 1px solid rgba(0,196,179,0.35);
     }
 
+    /* Career transition entry — lighter treatment than a job role */
+    .timeline-entry--transition::after {
+      background: var(--muted);
+      box-shadow: 0 0 0 3px var(--navy-mid), 0 0 0 7px rgba(143,163,184,0.15);
+    }
+    .timeline-entry--transition .tl-company {
+      font-size: 1.3rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .timeline-entry--transition .tl-positioning {
+      margin-bottom: 0;
+    }
+
     /* ── Timeline mobile reflow ──
        Date moves ABOVE company name; dot + vertical rule hidden */
     @media (max-width: 640px) {
@@ -1176,6 +1190,19 @@
             <span class="tag">DDoS Mitigation</span>
             <span class="tag">Change Management</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Career Transition & Relocation -->
+      <div class="timeline-entry timeline-entry--transition reveal">
+        <div class="timeline-year">
+          <div class="year-range">Apr 2018 – Apr 2020</div>
+        </div>
+        <div class="timeline-content">
+          <div class="tl-header">
+            <div class="tl-company">Career Transition &amp; Relocation to Canada</div>
+          </div>
+          <p class="tl-positioning">Relocated from Brazil to Canada and completed a professional transition into the Canadian technology market, leading to an IT Project Manager role with BCNET in Vancouver.</p>
         </div>
       </div>
 
