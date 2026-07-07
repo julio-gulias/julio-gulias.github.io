@@ -187,7 +187,7 @@
     }
     h1 {
       font-family: var(--font-display);
-      font-size: clamp(3rem, 7vw, 6rem);
+      font-size: clamp(3.5rem, 9vw, 6.5rem);
       font-weight: 900;
       line-height: 1.04;
       color: var(--white);
@@ -235,6 +235,25 @@
       text-transform: uppercase;
       color: var(--teal);
       margin-top: 0.3rem;
+    }
+    .hero-availability {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.2rem;
+      line-height: 1.5;
+    }
+    .hero-availability-dot {
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 3px rgba(16,207,192,0.15);
     }
     .hero-ctas {
       display: flex;
@@ -421,6 +440,7 @@
       }
       .year-range { font-size: 0.85rem; }
       .tl-company { font-size: 1.4rem; }
+      h1 { font-size: clamp(2rem, 8.5vw, 2.6rem); }
     }
 
     /* ── Skills ── */
@@ -837,9 +857,13 @@
 <section id="home">
   <div class="hero-bg"></div>
   <div class="hero-inner">
-    <div class="hero-label">Available for new opportunities</div>
-    <h1>Delivering complex<br>projects<em>.</em> Building<br>great teams<em>.</em></h1>
-    <p class="hero-sub">Senior Project, Program &amp; Delivery Manager with 14+ years helping organizations bring structure to ambiguity, align stakeholders, and deliver complex software, infrastructure, cybersecurity, and professional services initiatives.</p>
+    <div class="hero-label">Project &amp; Delivery Leadership</div>
+    <h1>Delivering complex<br><span style="white-space:nowrap;">projects<em>.</em> Building</span><br>great teams<em>.</em></h1>
+    <p class="hero-sub">Project and program delivery leader based in Greater Vancouver, with experience leading enterprise software, digital platforms, e-commerce, cloud infrastructure, cybersecurity, and Professional Services operations across distributed teams.</p>
+    <div class="hero-availability">
+      <span class="hero-availability-dot"></span>
+      <span>Currently open to senior project, program, delivery, and Professional Services leadership opportunities in Canada.</span>
+    </div>
     <div class="hero-stats">
       <div class="stat">
         <span class="stat-num">14+</span>
@@ -859,16 +883,15 @@
       </div>
     </div>
     <div class="hero-ctas">
-      <a class="hero-cta hero-cta--primary" href="assets/julio-gulias-resume.pdf" target="_blank" rel="noopener noreferrer">
-        View resume
+      <a class="hero-cta hero-cta--primary" href="#experience">
+        Explore My Experience
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a class="hero-cta hero-cta--ghost" href="#experience">
-        View career highlights
+      <a class="hero-cta hero-cta--ghost" href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener noreferrer">
+        Connect on LinkedIn
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
-    <p style="margin-top:1rem;font-size:0.75rem;color:var(--muted);letter-spacing:0.04em;">PDF résumé · Opens in a new tab</p>
   </div>
 </section>
 
