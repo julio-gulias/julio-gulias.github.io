@@ -358,6 +358,61 @@
       .help-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── Selected Delivery Impact ── */
+    #delivery-impact { background: var(--navy); }
+    .impact-intro {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      max-width: 700px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+    .impact-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(0,196,179,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .impact-card:hover {
+      border-color: rgba(0,196,179,0.35);
+      transform: translateY(-3px);
+    }
+    .impact-card-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(0,196,179,0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 3px;
+      margin-bottom: 0.9rem;
+    }
+    .impact-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .impact-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 768px) {
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+
     .timeline { position: relative; }
 
     /* Vertical rule */
@@ -990,6 +1045,48 @@
 
 <div class="divider"></div>
 
+<!-- ── SELECTED DELIVERY IMPACT ── -->
+<section id="delivery-impact">
+  <div class="section-inner">
+    <h2>Selected Delivery Impact</h2>
+    <p class="impact-intro">A few examples of the scale, complexity, and outcomes behind my delivery experience across enterprise software, digital platforms, cloud infrastructure, e-commerce, finance, compliance, and Professional Services.</p>
+    <div class="impact-grid">
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">Dell Premier Plus</div>
+        <h3>Global e-commerce platform expansion</h3>
+        <p>Contributed to a large global e-commerce program supporting Dell Premier Plus, including market expansion across Latin America and broader rollout to Australia, Canada, Europe, and Japan. Supported the migration of more than 20,000 client stores within a distributed delivery environment.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">HP Cloud System Matrix</div>
+        <h3>Cloud infrastructure product delivery</h3>
+        <p>Led a Brazil-based delivery team within a global Infrastructure-as-a-Service product program for private and hybrid cloud environments. Successful delivery contributed to increased client confidence, contract renewal, expanded scope, and team growth from 7 to 16 members.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">HP Capacity Advisor</div>
+        <h3>Product releases and team expansion</h3>
+        <p>Led delivery for a cloud infrastructure product used to monitor CPU, memory, network, disk I/O, and power utilization. Delivered multiple product releases and helped expand the team from 4 to 8 members as client trust increased.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">Dell Commissioning Tool</div>
+        <h3>Finance process automation</h3>
+        <p>Helped deliver a finance application that reduced the reseller commission closing cycle from weeks to days while increasing calculation reliability and reducing payment adjustments.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">Dell Statutory</div>
+        <h3>Compliance and statutory automation</h3>
+        <p>Supported delivery of statutory and legal functionality across multiple countries, reducing manual work, lowering reliance on external consultants, improving compliance readiness, and reducing risk of delays, penalties, and reporting issues.</p>
+      </div>
+      <div class="impact-card reveal">
+        <div class="impact-card-tag">Longo's</div>
+        <h3>Enterprise e-commerce re-platform</h3>
+        <p>Coordinated delivery, cutover, and hypercare activities for a complex grocery e-commerce re-platform, helping align client stakeholders, delivery teams, QA, vendors, and executive communication through go-live and post-launch stabilization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── CAREER TIMELINE ── -->
 <section id="experience">
   <div class="section-inner">
@@ -1010,7 +1107,7 @@
             <div class="tl-role">Head of Professional Services — North America</div>
             <div class="tl-location">Burnaby, BC, Canada</div>
           </div>
-          <p class="tl-positioning">Led professional services delivery for a growth-stage digital experience platform firm, bringing structure, governance, and delivery predictability to a distributed services organization.</p>
+          <p class="tl-positioning">Professional Services delivery and operations for Expresia DXP, Backbone's cloud-native digital experience platform, including e-commerce, discovery, and implementation engagements.</p>
           <ul class="tl-bullets">
             <li><strong>Standardized delivery governance</strong>, status reporting, risk management, change control, and capacity planning across distributed teams in Canada, Latin America, and Europe.</li>
             <li><strong>Led client delivery</strong> across e-commerce, government, and digital platform sectors, including Longo's and other implementation engagements.</li>
@@ -1039,7 +1136,7 @@
             <div class="tl-role">Engagement Manager — Professional Services</div>
             <div class="tl-location">Remote — Diamond Bar, CA, USA</div>
           </div>
-          <p class="tl-positioning">Managed enterprise professional services engagements for Fortune 500-calibre clients across North America and the Caribbean.</p>
+          <p class="tl-positioning">Professional Services delivery for Liferay DXP implementations, upgrades, integrations, and enterprise digital experience engagements.</p>
           <ul class="tl-bullets">
             <li><strong>Led 14 client engagements</strong>, including Quest Diagnostics, US Bank, Stanford University, FHLBNY, and CNO Financial Group.</li>
             <li><strong>Partnered with Sales and Legal</strong> to draft Statements of Work and align scope, assumptions, delivery approach, and risk.</li>
@@ -1066,7 +1163,7 @@
             <div class="tl-role">Project Manager — Network Infrastructure &amp; Cybersecurity</div>
             <div class="tl-location">Vancouver, BC, Canada</div>
           </div>
-          <p class="tl-positioning">Led a portfolio of network infrastructure and cybersecurity projects for British Columbia's higher education sector.</p>
+          <p class="tl-positioning">Technology infrastructure and cybersecurity project delivery for higher education and research institutions in British Columbia.</p>
           <ul class="tl-bullets">
             <li><strong>Delivered 79 projects</strong> for institutions including UBC, SFU, UVic, and KPU, managing up to 38 initiatives simultaneously.</li>
             <li><strong>Delivered redundant network connectivity</strong> across 20 post-secondary campuses and implemented DDoS detection tools.</li>
@@ -1093,7 +1190,7 @@
             <div class="tl-role">Senior Project Manager — Software Development</div>
             <div class="tl-location">Porto Alegre, RS, Brazil</div>
           </div>
-          <p class="tl-positioning">Led global software development initiatives for Dell's enterprise platforms, combining project leadership, agile delivery, and product ownership.</p>
+          <p class="tl-positioning">Software delivery across global enterprise technology environments, including e-commerce, finance automation, statutory compliance, and business systems.</p>
           <ul class="tl-bullets">
             <li><strong>Delivered 9 high-impact software projects</strong>, including the global rollout of Dell Premier Plus across Latin America, Australia, Canada, Europe, and Japan.</li>
             <li><strong>Supported the migration of 20,000+ customer stores</strong> worldwide and helped localize a B2B e-commerce platform for six Latin American countries.</li>
@@ -1120,7 +1217,7 @@
             <div class="tl-role">Project Manager — Software Development</div>
             <div class="tl-location">Porto Alegre, RS, Brazil</div>
           </div>
-          <p class="tl-positioning">Joined a troubled global software project and helped turn it into a high-performing team that earned expanded scope.</p>
+          <p class="tl-positioning">Brazil-based delivery leadership for enterprise cloud infrastructure products, including private and hybrid cloud solutions.</p>
           <ul class="tl-bullets">
             <li><strong>Delivered four releases</strong> of HP Cloud System Matrix and two releases of HP Capacity Advisor across distributed global teams.</li>
             <li><strong>Grew the team from 7 to 16 members</strong> while collaborating with teams across the US, Brazil, India, Romania, Japan, and Israel.</li>
