@@ -307,6 +307,57 @@
     /* ── Timeline ── */
     #experience { background: var(--navy-mid); }
 
+    /* ── How I Can Help ── */
+    #how-i-help { background: var(--navy-mid); }
+    .help-intro {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
+      color: var(--muted);
+      max-width: 700px;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 3rem;
+    }
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+    .help-card {
+      background: var(--navy-card);
+      border: 1px solid rgba(0,196,179,0.1);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .help-card:hover {
+      border-color: rgba(0,196,179,0.35);
+      transform: translateY(-3px);
+    }
+    .help-card-num {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      margin-bottom: 0.85rem;
+    }
+    .help-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .help-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 768px) {
+      .help-grid { grid-template-columns: 1fr; }
+    }
+
     .timeline { position: relative; }
 
     /* Vertical rule */
@@ -891,6 +942,48 @@
         Connect on LinkedIn
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── HOW I CAN HELP ── -->
+<section id="how-i-help">
+  <div class="section-inner">
+    <h2>How I Can Help</h2>
+    <p class="help-intro">I help organizations bring structure, visibility, and delivery discipline to complex technology initiatives — especially when teams are dealing with ambiguity, cross-functional dependencies, delivery risk, or rapid growth.</p>
+    <div class="help-grid">
+      <div class="help-card reveal">
+        <div class="help-card-num">01</div>
+        <h3>Recover critical projects</h3>
+        <p>Bring structure, visibility, and delivery discipline to initiatives facing ambiguity, delays, unclear ownership, or stakeholder misalignment.</p>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-card-num">02</div>
+        <h3>Lead complex technology programs</h3>
+        <p>Coordinate cross-functional teams, vendors, dependencies, risks, timelines, and governance across business and technology groups.</p>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-card-num">03</div>
+        <h3>Improve delivery predictability</h3>
+        <p>Create practical reporting, RAID routines, decision logs, delivery cadences, and escalation paths that help leaders see risks before they become surprises.</p>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-card-num">04</div>
+        <h3>Strengthen Professional Services operations</h3>
+        <p>Improve estimation, handoffs, governance, utilization visibility, client communication, delivery consistency, and project profitability.</p>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-card-num">05</div>
+        <h3>Bridge business and technology</h3>
+        <p>Translate business needs into actionable delivery plans and align technical and non-technical stakeholders around outcomes.</p>
+      </div>
+      <div class="help-card reveal">
+        <div class="help-card-num">06</div>
+        <h3>Support delivery leadership</h3>
+        <p>Mentor project managers, improve delivery routines, establish repeatable practices, and bring calm structure to complex environments.</p>
+      </div>
     </div>
   </div>
 </section>
