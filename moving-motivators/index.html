@@ -1,0 +1,591 @@
+<!--
+  ⚠️ THIS IS NOT THE SITE'S MAIN index.html ⚠️
+  File: /moving-motivators/index.html
+  Purpose: Interactive "Moving Motivators" tool subpage (Management 3.0 exercise).
+  This file must keep the name "index.html" inside the /moving-motivators/ folder
+  so that GitHub Pages serves it automatically at the clean URL:
+  https://julio-gulias.github.io/moving-motivators/
+  Do not confuse this with the root /index.html (the homepage).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LGT0YE1WS6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LGT0YE1WS6');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moving Motivators — Interactive Tool | Julio Gulias</title>
+  <meta name="description" content="An interactive Management 3.0 Moving Motivators exercise: rank the ten intrinsic motivators and reflect on how your current work supports or undermines each one.">
+  <meta name="author" content="Julio Gulias">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://julio-gulias.github.io/moving-motivators/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Moving Motivators — Interactive Tool | Julio Gulias">
+  <meta property="og:description" content="An interactive Management 3.0 Moving Motivators exercise: rank the ten intrinsic motivators and reflect on how your current work supports or undermines each one.">
+  <meta property="og:url" content="https://julio-gulias.github.io/moving-motivators/">
+  <meta property="og:image" content="https://julio-gulias.github.io/assets/articles/moving-motivators-silent-one-on-ones/moving-motivators-silent-one-on-ones.png">
+  <meta property="og:site_name" content="Julio Gulias">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Moving Motivators — Interactive Tool | Julio Gulias">
+  <meta name="twitter:description" content="An interactive Management 3.0 Moving Motivators exercise: rank the ten intrinsic motivators and reflect on how your current work supports or undermines each one.">
+  <meta name="twitter:image" content="https://julio-gulias.github.io/assets/articles/moving-motivators-silent-one-on-ones/moving-motivators-silent-one-on-ones.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --navy:      #0F1B2D;
+      --navy-mid:  #142942;
+      --navy-card: #1C3050;
+      --steel:     #4A6580;
+      --teal:      #10cfc0;
+      --off-white: #F0EDE6;
+      --muted:     #9fb8d3;
+      --light:     #d6e4f2;
+      --white:     #FFFFFF;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Site Header & Nav ── */
+    .site-header {
+      position: sticky; top: 0; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 18px 36px;
+      background: rgba(13,29,47,0.94);
+      border-bottom: 1px solid rgba(0,210,190,0.12);
+      backdrop-filter: blur(10px);
+    }
+    .brand { text-decoration: none; color: var(--white); display: flex; flex-direction: column; line-height: 1.1; }
+    .brand-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; }
+    .brand-subtitle { margin-top: 4px; font-size: 0.8rem; color: var(--muted); }
+    .main-nav { display: flex; align-items: center; gap: 32px; }
+    .main-nav a, .nav-dropdown-toggle {
+      color: var(--muted); text-decoration: none; text-transform: uppercase;
+      letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 700;
+      background: none; border: 0; cursor: pointer; font-family: inherit;
+      padding: 0; transition: color 0.2s;
+    }
+    .main-nav a:hover, .nav-dropdown-toggle:hover { color: var(--teal); }
+    .main-nav a.active, .nav-dropdown-toggle.active { color: var(--teal); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 32px; right: 0;
+      min-width: 220px; padding: 14px; background: #142942;
+      border: 1px solid rgba(0,196,179,0.25); border-radius: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+    }
+    .nav-dropdown-menu a {
+      display: block; padding: 10px 14px; border-radius: 6px;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 0.75rem; font-weight: 700; color: var(--muted); white-space: nowrap;
+    }
+    .nav-dropdown-menu a:hover { background: rgba(0,196,179,0.08); color: var(--teal); }
+    .nav-dropdown-menu a.active { color: var(--teal); }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
+    /* ── Mobile hamburger ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px; height: 36px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+      z-index: 1100;
+    }
+    .nav-hamburger span {
+      display: block;
+      height: 2px;
+      background: var(--off-white);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(13,29,47,0.98);
+      backdrop-filter: blur(12px);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      text-align: center;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover { color: var(--teal); }
+    .mobile-nav .mobile-sub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid rgba(0,196,179,0.2);
+      padding-top: 1.5rem;
+      width: 100%;
+    }
+    .mobile-nav .mobile-sub a {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .mobile-nav .mobile-sub a:hover { color: var(--teal); }
+    .mobile-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    @media(max-width:768px){
+      .main-nav{display:none}
+      .nav-hamburger{display:flex}
+      .site-header{padding:16px 22px}
+    }
+
+    /* ── Shared kicker ── */
+    .page-kicker {
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 24px;
+    }
+    .page-kicker::after {
+      content: "";
+      display: block;
+      width: 52px; height: 2px;
+      margin-top: 16px;
+      background: var(--teal);
+    }
+    .accent-dot { color: var(--teal); }
+
+    /* ================================
+       Moving Motivators Page
+    ================================ */
+    .mm-hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 72px 32px 24px;
+    }
+    .mm-hero h1 {
+      max-width: 820px;
+      margin: 0 0 22px;
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+      line-height: 1.02;
+      color: var(--white);
+    }
+    .mm-hero p {
+      max-width: 720px;
+      color: var(--light);
+      font-size: 1.1rem;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .mm-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .mm-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid rgba(16,207,192,0.5);
+      border-radius: 8px;
+      color: var(--teal);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .mm-links a:hover { transform: translateY(-2px); background: rgba(16,207,192,0.08); }
+    .mm-links a.primary {
+      color: #061724;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    /* ── Instructions ── */
+    .mm-instructions {
+      max-width: 1180px;
+      margin: 32px auto 0;
+      padding: 0 32px;
+    }
+    .mm-instructions-card {
+      padding: 28px 30px;
+      border: 1px solid rgba(159,184,211,0.22);
+      border-radius: 14px;
+      background: rgba(24,48,77,0.48);
+      box-shadow: 0 18px 48px rgba(0,0,0,0.16);
+    }
+    .mm-instructions-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .mm-instructions-card ol {
+      margin: 0;
+      padding-left: 22px;
+      display: grid;
+      gap: 12px;
+    }
+    .mm-instructions-card li {
+      color: var(--light);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+    .mm-instructions-card li strong { color: var(--teal); }
+    .mm-desktop-note {
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(159,184,211,0.18);
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── Sortable cards ── */
+    .mm-board-wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 12px 80px;
+    }
+    #sortable {
+      list-style-type: none;
+      margin: 0;
+      padding: 70px 20px 90px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #sortable li {
+      margin: 8px;
+      padding: 0;
+      float: left;
+      width: 220px;
+      height: 220px;
+      text-align: center;
+      border: 3px solid rgba(159,184,211,0.3);
+      border-radius: 12px;
+      background: var(--navy-card) none no-repeat center center;
+      background-size: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      cursor: grab;
+      position: relative;
+    }
+    #sortable li:hover {
+      border-color: rgba(16,207,192,0.55);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.3);
+    }
+    #sortable li.ui-sortable-helper {
+      cursor: grabbing;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.4);
+    }
+    .ui-state-default::before {
+      content: "?";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.6rem;
+      color: rgba(159,184,211,0.35);
+      pointer-events: none;
+    }
+    .ui-state-default.mm-revealed::before { content: none; }
+    #sortable li button {
+      position: absolute;
+      bottom: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(16,207,192,0.5);
+      background: rgba(15,27,45,0.85);
+      color: var(--teal);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    #sortable li button:hover { background: rgba(16,207,192,0.18); transform: scale(1.08); }
+    #sortable li button.positive { left: 8px; }
+    #sortable li button.negative { right: 8px; }
+    #sortable li .ui-icon { background: none; text-indent: 0; width: auto; height: auto; }
+    #sortable li .ui-icon-plus::before { content: "+"; font-size: 1.1rem; font-weight: 700; }
+    #sortable li .ui-icon-minus::before { content: "\2212"; font-size: 1.1rem; font-weight: 700; }
+    @media (max-width: 640px) {
+      #sortable { padding: 40px 8px 60px; justify-content: center; }
+      #sortable li { width: 42vw; height: 42vw; max-width: 220px; max-height: 220px; }
+    }
+
+    .site-footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 32px;
+      border-top: 1px solid rgba(159,184,211,0.14);
+      color: #7190af;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="../index.html#home">
+    <span class="brand-name">Julio Gulias</span>
+    <span class="brand-subtitle">Project &amp; Delivery Leadership</span>
+  </a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="../index.html#home">Home</a>
+    <a href="../index.html#experience">Experience</a>
+    <a href="../index.html#strengths">Strengths</a>
+    <a href="../index.html#about">About</a>
+    <a href="../recommendations.html">Recommendations</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-toggle active" type="button">
+        More <span aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="../training.html">Training &amp; Certifications</a>
+        <a href="../articles.html">Articles</a>
+        <a href="../volunteering.html">Volunteering</a>
+        <a href="../moving-motivators/" class="active">Moving Motivators</a>
+      </div>
+    </div>
+    <a href="../index.html#contact">Contact</a>
+  </nav>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile full-screen nav -->
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <button class="mobile-close" id="mobile-close" aria-label="Close menu">✕</button>
+  <a href="../index.html#home">Home</a>
+  <a href="../index.html#experience">Experience</a>
+  <a href="../index.html#strengths">Strengths</a>
+  <a href="../index.html#about">About</a>
+  <a href="../recommendations.html">Recommendations</a>
+  <a href="../index.html#contact">Contact</a>
+  <div class="mobile-sub">
+    <a href="../training.html">Training &amp; Certifications</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../volunteering.html">Volunteering</a>
+    <a href="../moving-motivators/" class="active">Moving Motivators</a>
+  </div>
+</nav>
+
+<main>
+
+  <section class="mm-hero">
+    <div class="page-kicker">Interactive Tool</div>
+    <h1>Moving Motivators<span class="accent-dot">.</span></h1>
+    <p>A Management 3.0 exercise built by Jurgen Appelo. Rank the ten intrinsic motivators from most to least important to you, then reflect on how well your current work supports each one — a simple way to turn a silent one-on-one into a real conversation.</p>
+    <div class="mm-links">
+      <a class="primary" href="../articles/moving-motivators-silent-one-on-ones.html">Read the article</a>
+      <a href="https://www.linkedin.com/pulse/moving-motivators-turning-silent-one-on-ones-julio-gulias-sspzc/" target="_blank" rel="noopener noreferrer">View on LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <div class="mm-instructions">
+    <div class="mm-instructions-card">
+      <h2>How to use it</h2>
+      <ol>
+        <li><strong>Reveal:</strong> click a card to reveal which motivator it represents.</li>
+        <li><strong>Rank:</strong> drag and drop the cards to order them from the most important motivator to you (left) to the least important (right).</li>
+        <li><strong>Reflect:</strong> for each card, click <strong>+</strong> if your current work situation supports that motivator, or <strong>&minus;</strong> if it works against it. Each click nudges the card up or down.</li>
+        <li><strong>Discuss:</strong> cards that end up high are strengths to build on; cards that sink low are worth talking about.</li>
+      </ol>
+      <p class="mm-desktop-note">This tool is designed for web browsers on computers and is not optimized for mobile devices.</p>
+    </div>
+  </div>
+
+  <div class="mm-board-wrap">
+    <ul id="sortable">
+      <li id="power" class="ui-state-default" data-level="0" aria-label="Power">
+        <button class="positive" data-target="power" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="power" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="goal" class="ui-state-default" data-level="0" aria-label="Goal">
+        <button class="positive" data-target="goal" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="goal" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="acceptance" class="ui-state-default" data-level="0" aria-label="Acceptance">
+        <button class="positive" data-target="acceptance" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="acceptance" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="freedom" class="ui-state-default" data-level="0" aria-label="Freedom">
+        <button class="positive" data-target="freedom" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="freedom" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="curiosity" class="ui-state-default" data-level="0" aria-label="Curiosity">
+        <button class="positive" data-target="curiosity" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="curiosity" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="mastery" class="ui-state-default" data-level="0" aria-label="Mastery">
+        <button class="positive" data-target="mastery" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="mastery" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="status" class="ui-state-default" data-level="0" aria-label="Status">
+        <button class="positive" data-target="status" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="status" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="order" class="ui-state-default" data-level="0" aria-label="Order">
+        <button class="positive" data-target="order" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="order" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="honor" class="ui-state-default" data-level="0" aria-label="Honor">
+        <button class="positive" data-target="honor" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="honor" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+      <li id="relatedness" class="ui-state-default" data-level="0" aria-label="Relatedness">
+        <button class="positive" data-target="relatedness" title="Positive"><span class="ui-icon ui-icon-plus"></span></button>
+        <button class="negative" data-target="relatedness" title="Negative"><span class="ui-icon ui-icon-minus"></span></button>
+      </li>
+    </ul>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2026 Julio Gulias · Built with plain HTML · Hosted on GitHub Pages</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script>
+  $( function() {
+    var STEP = 18;       // pixels moved per click
+    var MAX_LEVEL = 4;   // how many steps a card can move up or down
+
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+
+    $(".ui-state-default").click(function() {
+      var id = $(this).attr('id');
+      $("#" + id).addClass('mm-revealed').css({
+        background: 'url(images/' + id + '.png) no-repeat center center',
+        'background-size': '100%'
+      });
+    });
+
+    function applyLevel($card) {
+      var level = parseInt($card.attr('data-level'), 10) || 0;
+      $card.css('transform', 'translateY(' + (-level * STEP) + 'px)');
+    }
+
+    $(".positive").on('click', function(e) {
+      e.stopPropagation();
+      var $card = $("#" + $(this).data('target'));
+      var level = parseInt($card.attr('data-level'), 10) || 0;
+      if (level < MAX_LEVEL) {
+        level++;
+        $card.attr('data-level', level);
+      }
+      $card.css({'border-color': '#10cfc0'});
+      applyLevel($card);
+    });
+
+    $(".negative").on('click', function(e) {
+      e.stopPropagation();
+      var $card = $("#" + $(this).data('target'));
+      var level = parseInt($card.attr('data-level'), 10) || 0;
+      if (level > -MAX_LEVEL) {
+        level--;
+        $card.attr('data-level', level);
+      }
+      $card.css({'border-color': '#e0556f'});
+      applyLevel($card);
+    });
+  });
+</script>
+
+<script>
+  (function() {
+    var btn = document.getElementById('hamburger');
+    var nav = document.getElementById('mobile-nav');
+    var close = document.getElementById('mobile-close');
+    function openMenu() {
+      nav.classList.add('open');
+      btn.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    btn.addEventListener('click', function() {
+      nav.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    close.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
+</body>
+</html>
