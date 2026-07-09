@@ -369,6 +369,36 @@
       #sortable li { width: 42vw; height: 42vw; max-width: 220px; max-height: 220px; }
     }
 
+    /* ── Mobile-only alert banner ── */
+    .mm-mobile-alert {
+      display: none;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: #3a2410;
+      border-bottom: 2px solid #f5a623;
+      color: #ffd9a0;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      position: relative;
+      z-index: 1200;
+    }
+    .mm-mobile-alert-icon { font-size: 1.15rem; flex-shrink: 0; }
+    .mm-mobile-alert-text { flex: 1; }
+    .mm-mobile-alert-close {
+      background: none;
+      border: none;
+      color: #ffd9a0;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 6px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .mm-mobile-alert { display: flex; }
+    }
+
     .site-footer {
       max-width: 1180px;
       margin: 0 auto;
@@ -381,6 +411,12 @@
   </style>
 </head>
 <body>
+
+<div class="mm-mobile-alert" id="mm-mobile-alert" role="alert">
+  <span class="mm-mobile-alert-icon" aria-hidden="true">⚠️</span>
+  <span class="mm-mobile-alert-text">Heads up: this tool is built for desktop browsers and may not work well on mobile.</span>
+  <button class="mm-mobile-alert-close" id="mm-mobile-alert-close" aria-label="Dismiss">✕</button>
+</div>
 
 <header class="site-header">
   <a class="brand" href="../index.html#home">
@@ -582,6 +618,18 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMenu();
     });
+  })();
+</script>
+
+<script>
+  (function() {
+    var alertBox = document.getElementById('mm-mobile-alert');
+    var closeBtn = document.getElementById('mm-mobile-alert-close');
+    if (closeBtn && alertBox) {
+      closeBtn.addEventListener('click', function() {
+        alertBox.style.display = 'none';
+      });
+    }
   })();
 </script>
 </body>
