@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -15,24 +15,40 @@
 </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YouTube Channels | Julio Gulias</title>
-  <meta name="description" content="Explore Julio Gulias's English and Portuguese YouTube channels, featuring practical reflections on project delivery, leadership, career transitions, and professional growth.">
+  <title>Julio Gulias em Português | YouTube</title>
+  <meta name="description" content="Vídeos sobre carreira, gestão de projetos, liderança, imigração, períodos entre empregos e futuro do trabalho no canal Julio Gulias em Português.">
   <meta name="author" content="Julio Gulias">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://julio-gulias.github.io/youtube.html">
+  <link rel="canonical" href="https://julio-gulias.github.io/youtube-pt.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="YouTube Channels | Julio Gulias">
-  <meta property="og:description" content="Explore Julio Gulias's English and Portuguese YouTube channels, featuring practical reflections on project delivery, leadership, career transitions, and professional growth.">
-  <meta property="og:url" content="https://julio-gulias.github.io/youtube.html">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Julio Gulias em Português | YouTube">
+  <meta property="og:description" content="Vídeos sobre carreira, gestão de projetos, liderança, imigração, períodos entre empregos e futuro do trabalho.">
+  <meta property="og:url" content="https://julio-gulias.github.io/youtube-pt.html">
   <meta property="og:image" content="https://julio-gulias.github.io/img/julio-gulias.png">
   <meta property="og:site_name" content="Julio Gulias">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="YouTube Channels | Julio Gulias">
-  <meta name="twitter:description" content="Explore Julio Gulias's English and Portuguese YouTube channels, featuring practical reflections on project delivery, leadership, career transitions, and professional growth.">
+  <meta name="twitter:title" content="Julio Gulias em Português | YouTube">
+  <meta name="twitter:description" content="Vídeos sobre carreira, gestão de projetos, liderança, imigração, períodos entre empregos e futuro do trabalho.">
   <meta name="twitter:image" content="https://julio-gulias.github.io/img/julio-gulias.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Julio Gulias em Português | YouTube",
+    "description": "Vídeos sobre carreira, gestão de projetos, liderança, imigração, períodos entre empregos e futuro do trabalho no canal Julio Gulias em Português.",
+    "url": "https://julio-gulias.github.io/youtube-pt.html",
+    "inLanguage": "pt-BR",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Julio Gulias",
+      "url": "https://julio-gulias.github.io/"
+    }
+  }
+  </script>
   <style>
     /* ── Tokens ── */
     :root {
@@ -46,7 +62,7 @@
     html{scroll-behavior:smooth}
     body{background:var(--navy);color:var(--off-white);font-family:var(--font-body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
 
-    /* ── Site Header & Nav ── */
+    /* ── Site Header & Nav (shared, kept in English) ── */
     .site-header{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 36px;background:rgba(13,29,47,0.94);border-bottom:1px solid rgba(0,210,190,0.12);backdrop-filter:blur(10px)}
     .brand{text-decoration:none;color:var(--white);display:flex;flex-direction:column;line-height:1.1}
     .brand-name{font-family:var(--font-display);font-size:1.35rem;font-weight:700}
@@ -148,93 +164,82 @@
     .page-kicker::after,.section-kicker::after{content:"";display:block;width:52px;height:2px;margin-top:16px;background:var(--teal)}
     .accent-dot{color:var(--teal)}
 
+    /* ── Back link ── */
+    .back-link{display:inline-flex;margin:0 0 28px;color:var(--teal);text-decoration:none;font-size:0.95rem;font-weight:700}
+    .back-link:hover{text-decoration:underline}
+    .back-link:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+
+    /* ── Buttons (shared style, reused from homepage hero CTAs) ── */
+    .yt-btn{
+      display:inline-flex;align-items:center;gap:0.5rem;
+      font-weight:600;font-size:0.9rem;text-decoration:none;
+      padding:0.85rem 1.75rem;border-radius:8px;
+      transition:background 0.2s, transform 0.15s, border-color 0.2s;
+    }
+    .yt-btn:hover{transform:translateY(-2px)}
+    .yt-btn:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+    .yt-btn--primary{background:var(--teal);color:var(--navy)}
+    .yt-btn--primary:hover{background:#00ddd0}
+    .yt-btn--ghost{background:transparent;color:var(--off-white);border:1px solid rgba(240,237,230,0.35)}
+    .yt-btn--ghost:hover{border-color:var(--teal);color:var(--teal)}
+    .yt-btn-row{display:flex;flex-wrap:wrap;gap:14px}
+
     /* ── Site Footer ── */
     .site-footer{max-width:1180px;margin:0 auto;padding:32px;border-top:1px solid rgba(159,184,211,0.14);color:#7190af;text-align:center;font-size:0.78rem}
 
     /* ================================
-       YouTube Page
+       YouTube PT Page
     ================================ */
-    .youtube-hero{max-width:1180px;margin:0 auto;padding:88px 32px 40px}
-    .youtube-hero h1{max-width:700px;margin:0 0 20px;font-family:var(--font-serif);font-size:clamp(2.6rem,5.5vw,4.4rem);line-height:1.02;color:var(--white)}
-    .youtube-hero p{max-width:680px;margin:0;color:var(--light);font-size:1.1rem;line-height:1.75}
+    .ytpt-wrap{max-width:1180px;margin:0 auto;padding:0 32px}
 
-    .youtube-section{max-width:1180px;margin:0 auto;padding:16px 32px 20px}
-    .youtube-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
-    .youtube-card{
-      display:flex;flex-direction:column;
-      padding:36px;border-radius:14px;
+    .ytpt-hero{padding:44px 0 8px}
+    .ytpt-hero h1{max-width:760px;margin:0 0 20px;font-family:var(--font-serif);font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.05;color:var(--white)}
+    .ytpt-hero p{max-width:700px;margin:0 0 16px;color:var(--light);font-size:1.1rem;line-height:1.75}
+    .ytpt-hero .ytpt-support-text{max-width:700px;margin:0 0 28px;color:var(--muted);font-size:0.96rem;line-height:1.7}
+
+    .ytpt-section{padding:40px 0}
+    .ytpt-section h2{margin:0 0 14px;font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);line-height:1.25;color:var(--white)}
+    .ytpt-section p{max-width:760px;margin:0 0 24px;color:var(--light);font-size:1rem;line-height:1.75}
+
+    .ytpt-embed-wrap{
+      position:relative;
+      padding:8px;
+      border:1px solid rgba(159,184,211,0.22);
+      border-radius:14px;
+      background:rgba(255,255,255,0.04);
+      box-shadow:0 18px 48px rgba(0,0,0,0.16);
+      overflow:hidden;
+      max-width:860px;
+      margin:0 0 22px;
+    }
+    .ytpt-embed-wrap.ytpt-embed-9x16{max-width:340px;margin-left:auto;margin-right:auto}
+    .ytpt-embed-16x9{aspect-ratio:16/9}
+    .ytpt-embed-9x16{aspect-ratio:9/16}
+    .ytpt-embed-wrap iframe{
+      display:block;width:100%;height:100%;border:0;border-radius:8px;
+    }
+
+    .ytpt-cta{
+      max-width:1180px;margin:16px auto 0;padding:32px;border-radius:14px;
       border:1px solid rgba(159,184,211,0.22);
       background:rgba(24,48,77,0.48);
       box-shadow:0 18px 48px rgba(0,0,0,0.16);
-      height:100%;
+      display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
     }
-    .youtube-card-icon{
-      width:58px;height:58px;margin-bottom:22px;
-      border:1px solid var(--teal);color:var(--teal);
-      border-radius:50%;display:grid;place-items:center;
-    }
-    .youtube-card-icon svg{width:22px;height:22px}
-    .youtube-language-label{
-      font-size:0.72rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;
-      color:var(--teal);margin-bottom:10px;
-    }
-    .youtube-card h2{margin:0 0 14px;font-family:var(--font-serif);font-size:1.65rem;line-height:1.2;color:var(--white)}
-    .youtube-card p{margin:0 0 22px;color:var(--light);font-size:1rem;line-height:1.7;flex-grow:1}
-    .youtube-badge{
-      display:inline-flex;align-items:center;align-self:flex-start;
-      padding:6px 12px;margin-bottom:22px;
-      font-size:0.7rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
-      border-radius:6px;border:1px solid rgba(159,184,211,0.4);color:var(--muted);
-      background:rgba(159,184,211,0.06);
-    }
-    .youtube-badge--available{border-color:rgba(16,207,192,0.55);color:var(--teal);background:rgba(16,207,192,0.07)}
-    .youtube-cta-disabled{
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;padding:16px 20px;border-radius:8px;
-      font-size:0.85rem;font-weight:800;letter-spacing:0.03em;text-align:center;
-      color:var(--steel);background:rgba(74,101,128,0.14);
-      border:1px solid rgba(159,184,211,0.18);
-      cursor:not-allowed;user-select:none;
-    }
-    /* ── Active/linked card (whole card clickable via stretched CTA link) ── */
-    .youtube-card--linked{
-      position:relative;
-      transition:border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .youtube-card--linked:hover{
-      border-color:rgba(16,207,192,0.5);
-      transform:translateY(-3px);
-      box-shadow:0 22px 54px rgba(0,0,0,0.22);
-    }
-    .youtube-cta-active{
-      position:relative;z-index:1;
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;padding:16px 20px;border-radius:8px;
-      font-size:0.85rem;font-weight:800;letter-spacing:0.03em;text-align:center;
-      text-decoration:none;
-      color:#061724;background:var(--teal);
-      transition:background 0.2s;
-    }
-    .youtube-cta-active:hover{background:#00ddd0}
-    .youtube-cta-active:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
-    /* Stretches the CTA link to cover the entire card, making the whole card clickable
-       without nesting an <a> around the card (which would be invalid HTML). */
-    .youtube-card--linked .youtube-cta-active::after{
-      content:"";
-      position:absolute;
-      inset:0;
-    }
+    .ytpt-cta h2{margin:0 0 8px;font-family:var(--font-serif);font-size:1.5rem;color:var(--white);line-height:1.25}
+    .ytpt-cta p{margin:0;max-width:640px;color:var(--light);font-size:0.96rem;line-height:1.65}
 
-    .youtube-support{max-width:760px;margin:8px auto 56px;padding:0 32px;text-align:center;color:var(--muted);font-size:0.92rem;line-height:1.7}
+    #ytpt-featured{background:var(--navy-mid)}
+    #ytpt-playlist{background:var(--navy-mid)}
 
     @media(max-width:980px){
-      .youtube-grid{grid-template-columns:1fr}
+      .ytpt-cta{grid-template-columns:1fr}
     }
     @media(max-width:720px){
-      .youtube-hero{padding:64px 22px 32px}
-      .youtube-section{padding:12px 22px 16px}
-      .youtube-card{padding:28px}
-      .youtube-support{padding:0 22px;margin-bottom:44px}
+      .ytpt-wrap{padding:0 22px}
+      .ytpt-hero{padding:32px 0 4px}
+      .ytpt-section{padding:28px 0}
+      .ytpt-cta{margin:12px 22px 0;padding:26px;width:auto}
     }
   </style>
 </head>
@@ -289,52 +294,94 @@
 
 <main>
 
+  <div class="ytpt-wrap">
+    <a class="back-link" href="youtube.html" style="margin-top:24px;">← YouTube Channels</a>
+  </div>
+
   <!-- ── Hero ── -->
-  <section class="youtube-hero">
-    <div class="page-kicker">Content &amp; Conversations</div>
-    <h1>YouTube<span class="accent-dot">.</span></h1>
-    <p>Practical reflections on project delivery, leadership, career transitions, and professional growth — in English and Portuguese.</p>
-  </section>
-
-  <!-- ── Channel selection ── -->
-  <section class="youtube-section">
-    <div class="youtube-grid">
-
-      <!-- Card 1 — English Channel -->
-      <div class="youtube-card">
-        <div class="youtube-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="youtube-language-label">English Channel</div>
-        <span class="youtube-badge">Coming Soon</span>
-        <h2>Julio Gulias</h2>
-        <p>Practical insights on project management, delivery leadership, technology, career development, and navigating professional transitions in Canada.</p>
-        <!-- TODO: Replace the disabled CTA with a link to youtube-en.html after the English channel page is created -->
-        <span class="youtube-cta-disabled" role="button" aria-disabled="true" tabindex="-1">
-          English Channel — Coming Soon
-        </span>
+  <section class="ytpt-hero">
+    <div class="ytpt-wrap">
+      <div class="page-kicker">Canal em Português</div>
+      <h1>Julio Gulias em Português<span class="accent-dot">.</span></h1>
+      <p>Reflexões, experiências e orientações práticas sobre carreira, gestão de projetos, liderança, imigração, períodos entre empregos e o futuro do trabalho.</p>
+      <p class="ytpt-support-text">Conteúdo criado em português para profissionais que estão construindo, reconstruindo ou repensando sua trajetória profissional.</p>
+      <div class="yt-btn-row">
+        <a class="yt-btn yt-btn--primary" href="https://www.youtube.com/@julioguliasbr" target="_blank" rel="noopener noreferrer">Visitar o Canal</a>
+        <a class="yt-btn yt-btn--ghost" href="https://www.youtube.com/@julioguliasbr?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Inscrever-se no YouTube</a>
       </div>
-      <!-- TODO: Link to youtube-en.html after the English channel page is created -->
-
-      <!-- Card 2 — Portuguese Channel -->
-      <div class="youtube-card youtube-card--linked">
-        <div class="youtube-card-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <div class="youtube-language-label">Portuguese Channel</div>
-        <span class="youtube-badge youtube-badge--available">Channel Available</span>
-        <h2>Julio Gulias em Português</h2>
-        <p>Reflexões sobre carreira, gestão de projetos, liderança, imigração e os desafios de construir uma trajetória profissional no Canadá.</p>
-        <a class="youtube-cta-active" href="youtube-pt.html">
-          Explore the Portuguese Channel
-        </a>
-      </div>
-
     </div>
   </section>
 
-  <!-- ── Supporting text ── -->
-  <p class="youtube-support">Each channel will feature original content adapted to its audience and language rather than direct translations of every video.</p>
+  <!-- ── Featured video ── -->
+  <section class="ytpt-section" id="ytpt-featured">
+    <div class="ytpt-wrap">
+      <div class="section-kicker">Episódio em Destaque</div>
+      <h2>Fui demitido duas vezes no Canadá — esta foi a maior lição</h2>
+      <p>Depois de duas demissões, uma promoção a Head of Professional Services e três períodos entre empregos, compartilho a principal lição que mudou a forma como enxergo minha carreira.</p>
+      <div class="ytpt-embed-wrap ytpt-embed-16x9">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/CPRWZ-6JL2o"
+          title="Fui demitido duas vezes no Canadá — esta foi a maior lição"
+          loading="lazy"
+          allowfullscreen
+          allow="fullscreen"
+        ></iframe>
+      </div>
+      <a class="yt-btn yt-btn--ghost" href="https://youtu.be/CPRWZ-6JL2o" target="_blank" rel="noopener noreferrer">Assistir no YouTube</a>
+    </div>
+  </section>
+
+  <!-- ── Related Short ── -->
+  <section class="ytpt-section" id="ytpt-short">
+    <div class="ytpt-wrap">
+      <div class="section-kicker">Short Relacionado</div>
+      <h2>Nem tudo foi culpa sua | Entre empregos</h2>
+      <p>Uma reflexão breve sobre responsabilidade, limites e a diferença entre reconhecer nossos erros e assumir a culpa por tudo.</p>
+      <div class="ytpt-embed-wrap ytpt-embed-9x16">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/Z0nN3fSqb5Q"
+          title="Nem tudo foi culpa sua | Entre empregos"
+          loading="lazy"
+          allowfullscreen
+          allow="fullscreen"
+        ></iframe>
+      </div>
+      <a class="yt-btn yt-btn--ghost" href="https://youtube.com/shorts/Z0nN3fSqb5Q" target="_blank" rel="noopener noreferrer">Assistir ao Short no YouTube</a>
+    </div>
+  </section>
+
+  <!-- ── Playlist ── -->
+  <section class="ytpt-section" id="ytpt-playlist">
+    <div class="ytpt-wrap">
+      <div class="section-kicker">Playlist</div>
+      <h2>Carreira, Transições e Futuro do Trabalho</h2>
+      <p>Experiências, reflexões e orientações práticas sobre períodos entre empregos, carreira internacional, gestão, liderança e as transformações que estão moldando o futuro do trabalho.</p>
+      <div class="ytpt-embed-wrap ytpt-embed-16x9">
+        <iframe
+          src="https://www.youtube-nocookie.com/embed/videoseries?list=PLQSonsIcMTFQ"
+          title="Playlist: Carreira, Transições e Futuro do Trabalho"
+          loading="lazy"
+          allowfullscreen
+          allow="fullscreen"
+        ></iframe>
+      </div>
+      <a class="yt-btn yt-btn--ghost" href="https://www.youtube.com/playlist?list=PLQSonsIcMTFQ" target="_blank" rel="noopener noreferrer">Abrir a Playlist no YouTube</a>
+    </div>
+  </section>
+
+  <!-- ── Channel invitation ── -->
+  <section class="ytpt-section" id="ytpt-invitation" style="padding-bottom:56px;">
+    <div class="ytpt-cta">
+      <div>
+        <h2>Acompanhe os próximos episódios</h2>
+        <p>Novos conteúdos abordarão carreira, liderança, gestão de projetos, períodos entre empregos, imigração e desenvolvimento profissional a partir de experiências reais e aprendizados práticos.</p>
+      </div>
+      <div class="yt-btn-row">
+        <a class="yt-btn yt-btn--primary" href="https://www.youtube.com/@julioguliasbr" target="_blank" rel="noopener noreferrer">Visitar o Canal</a>
+        <a class="yt-btn yt-btn--ghost" href="https://www.youtube.com/@julioguliasbr?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Inscrever-se</a>
+      </div>
+    </div>
+  </section>
 
 </main>
 
