@@ -1,7 +1,10 @@
 <!--
-  File: /mov-motivators/moving-motivators.html
+  ⚠️ THIS IS NOT THE SITE'S MAIN index.html ⚠️
+  File: /moving-motivators/index.html
   Purpose: Interactive "Moving Motivators" tool subpage (Management 3.0 exercise).
-  Live URL: https://julio-gulias.github.io/mov-motivators/moving-motivators.html
+  This file must keep the name "index.html" inside the /moving-motivators/ folder
+  so that GitHub Pages serves it automatically at the clean URL:
+  https://julio-gulias.github.io/moving-motivators/
   Do not confuse this with the root /index.html (the homepage).
 -->
 <!DOCTYPE html>
@@ -25,11 +28,11 @@
   <meta name="description" content="An interactive Management 3.0 Moving Motivators exercise: rank the ten intrinsic motivators and reflect on how your current work supports or undermines each one.">
   <meta name="author" content="Julio Gulias">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://julio-gulias.github.io/mov-motivators/moving-motivators.html">
+  <link rel="canonical" href="https://julio-gulias.github.io/moving-motivators/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Moving Motivators — Interactive Tool | Julio Gulias">
   <meta property="og:description" content="An interactive Management 3.0 Moving Motivators exercise: rank the ten intrinsic motivators and reflect on how your current work supports or undermines each one.">
-  <meta property="og:url" content="https://julio-gulias.github.io/mov-motivators/moving-motivators.html">
+  <meta property="og:url" content="https://julio-gulias.github.io/moving-motivators/">
   <meta property="og:image" content="https://julio-gulias.github.io/assets/articles/moving-motivators-silent-one-on-ones/moving-motivators-silent-one-on-ones.png">
   <meta property="og:site_name" content="Julio Gulias">
   <meta name="twitter:card" content="summary_large_image">
@@ -345,7 +348,7 @@
     .ui-state-default.mm-revealed::before { content: none; }
     #sortable li button {
       position: absolute;
-      bottom: 8px;
+      bottom: 28px;
       width: 34px;
       height: 34px;
       border-radius: 50%;
@@ -369,36 +372,6 @@
       #sortable li { width: 42vw; height: 42vw; max-width: 220px; max-height: 220px; }
     }
 
-    /* ── Mobile-only alert banner ── */
-    .mm-mobile-alert {
-      display: none;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      background: #3a2410;
-      border-bottom: 2px solid #f5a623;
-      color: #ffd9a0;
-      font-size: 0.88rem;
-      line-height: 1.4;
-      position: relative;
-      z-index: 1200;
-    }
-    .mm-mobile-alert-icon { font-size: 1.15rem; flex-shrink: 0; }
-    .mm-mobile-alert-text { flex: 1; }
-    .mm-mobile-alert-close {
-      background: none;
-      border: none;
-      color: #ffd9a0;
-      font-size: 1.2rem;
-      line-height: 1;
-      cursor: pointer;
-      padding: 4px 6px;
-      flex-shrink: 0;
-    }
-    @media (max-width: 768px) {
-      .mm-mobile-alert { display: flex; }
-    }
-
     .site-footer {
       max-width: 1180px;
       margin: 0 auto;
@@ -411,12 +384,6 @@
   </style>
 </head>
 <body>
-
-<div class="mm-mobile-alert" id="mm-mobile-alert" role="alert">
-  <span class="mm-mobile-alert-icon" aria-hidden="true">⚠️</span>
-  <span class="mm-mobile-alert-text">Heads up: this tool is built for desktop browsers and may not work well on mobile.</span>
-  <button class="mm-mobile-alert-close" id="mm-mobile-alert-close" aria-label="Dismiss">✕</button>
-</div>
 
 <header class="site-header">
   <a class="brand" href="../index.html#home">
@@ -437,7 +404,7 @@
         <a href="../training.html">Training &amp; Certifications</a>
         <a href="../articles.html">Articles</a>
         <a href="../volunteering.html">Volunteering</a>
-        <a href="../mov-motivators/moving-motivators.html" class="active">Moving Motivators</a>
+        <a href="../moving-motivators/" class="active">Moving Motivators</a>
       </div>
     </div>
     <a href="../index.html#contact">Contact</a>
@@ -461,7 +428,7 @@
     <a href="../training.html">Training &amp; Certifications</a>
     <a href="../articles.html">Articles</a>
     <a href="../volunteering.html">Volunteering</a>
-    <a href="../mov-motivators/moving-motivators.html" class="active">Moving Motivators</a>
+    <a href="../moving-motivators/" class="active">Moving Motivators</a>
   </div>
 </nav>
 
@@ -618,18 +585,6 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMenu();
     });
-  })();
-</script>
-
-<script>
-  (function() {
-    var alertBox = document.getElementById('mm-mobile-alert');
-    var closeBtn = document.getElementById('mm-mobile-alert-close');
-    if (closeBtn && alertBox) {
-      closeBtn.addEventListener('click', function() {
-        alertBox.style.display = 'none';
-      });
-    }
   })();
 </script>
 </body>
