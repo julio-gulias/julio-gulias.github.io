@@ -24,12 +24,12 @@
   <meta property="og:title" content="Julio Gulias | Senior Project, Program & Delivery Leader">
   <meta property="og:description" content="Senior Project, Program, and Delivery leader based in Greater Vancouver, with 14+ years leading complex software, consulting, SaaS/DXP, cloud infrastructure, and cybersecurity-adjacent delivery.">
   <meta property="og:url" content="https://julio-gulias.github.io/">
-  <meta property="og:image" content="https://julio-gulias.github.io/img/julio-gulias.png">
+  <meta property="og:image" content="https://julio-gulias.github.io/img/julio-gulias-contact.jpg">
   <meta property="og:site_name" content="Julio Gulias">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Julio Gulias | Senior Project, Program & Delivery Leader">
   <meta name="twitter:description" content="Senior Project, Program, and Delivery leader based in Greater Vancouver, with 14+ years leading complex software, consulting, SaaS/DXP, cloud infrastructure, and cybersecurity-adjacent delivery.">
-  <meta name="twitter:image" content="https://julio-gulias.github.io/img/julio-gulias.png">
+  <meta name="twitter:image" content="https://julio-gulias.github.io/img/julio-gulias-contact.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -152,7 +152,7 @@
     .nav-dropdown:focus-within .nav-dropdown-menu { display: block; }
 
     /* ── Section Shell ── */
-    section { padding: 6rem 2rem; }
+    section { padding: 6rem 2rem; scroll-margin-top: 96px; }
     .section-inner { max-width: var(--max); margin: 0 auto; }
     .section-eyebrow {
       font-size: 0.72rem;
@@ -617,44 +617,6 @@
     }
     .contact-btn.ghost:hover { border-color: var(--teal); color: var(--teal); }
 
-    /* Value strip */
-    .contact-values {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .contact-value {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding: 0 2.5rem;
-      flex: 1;
-      min-width: 180px;
-    }
-    .contact-value + .contact-value {
-      border-left: 1px solid rgba(255,255,255,0.1);
-    }
-    .value-icon {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      border: 1.5px solid var(--teal);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--teal);
-    }
-    .value-text {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.4;
-      text-align: left;
-    }
-
     footer {
       background: var(--navy);
       padding: 1.75rem 2rem;
@@ -680,24 +642,37 @@
     }
 
     /* ── Scroll animations ── */
+    /* Progressive enhancement: content is visible by default. The 'js-reveal'
+       class is added by script only once JS actually runs, so the hidden/
+       animated state never applies if JS is unavailable or fails. */
     .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    html.js-reveal .reveal {
       opacity: 0;
       transform: translateY(24px);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .reveal.visible {
+    html.js-reveal .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
+      html.js-reveal .reveal { opacity: 1; transform: none; transition: none; }
     }
 
     /* ── Responsive ── */
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .main-nav { display: none; }
+      section { padding: 4rem 1.5rem; }
+      #home {
+        min-height: auto;
+        display: block;
+        padding: 2.5rem 1.5rem 2.5rem;
+      }
       .hero-credibility { gap: 0.6rem; }
       .hero-ctas { flex-direction: column; }
       .hero-cta { justify-content: center; }
@@ -793,7 +768,7 @@
   "name": "Julio Cesar Gulias",
   "alternateName": "Julio Gulias",
   "url": "https://julio-gulias.github.io/",
-  "image": "https://julio-gulias.github.io/img/julio-gulias.png",
+  "image": "https://julio-gulias.github.io/img/julio-gulias-contact.jpg",
   "jobTitle": [
     "Senior Project Manager",
     "Program Manager",
@@ -849,6 +824,7 @@
       <div class="nav-dropdown-menu">
         <a href="training.html">Training &amp; Certifications</a>
         <a href="articles.html">Articles</a>
+        <a href="youtube.html">YouTube</a>
         <a href="volunteering.html">Volunteering</a>
         <a href="mov-motivators/moving-motivators.html">Moving Motivators</a>
       </div>
@@ -872,6 +848,7 @@
   <div class="mobile-sub">
     <a href="training.html">Training &amp; Certifications</a>
     <a href="articles.html">Articles</a>
+    <a href="youtube.html">YouTube</a>
     <a href="volunteering.html">Volunteering</a>
     <a href="mov-motivators/moving-motivators.html">Moving Motivators</a>
   </div>
@@ -1084,11 +1061,11 @@
     <p class="contact-intro">I'm currently open to Senior Project, Program, Delivery, Engagement, and selective Professional Services leadership opportunities.</p>
     <p class="contact-intro">I'm based in Greater Vancouver and open to permanent or contract engagements.</p>
     <div class="contact-portrait">
-      <img src="img/julio-gulias-contact.jpg" alt="Julio Gulias — Senior Project, Program and Delivery Manager based in Greater Vancouver" />
+      <img src="img/julio-gulias-contact.jpg" alt="Julio Gulias — Senior Project, Program &amp; Delivery Leader based in Greater Vancouver" />
     </div>
     <div class="contact-links">
       <a class="contact-btn primary" href="https://www.linkedin.com/in/julio-cesar-gulias/" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="3"/><path fill="var(--navy)" d="M7 10h2v7H7zm1-3a1.1 1.1 0 110 2.2A1.1 1.1 0 018 7zm4 3h1.9v1h.05A2.2 2.2 0 0116 9.9c2.1 0 2.5 1.4 2.5 3.2V17h-2v-3.5c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V17H12V10z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="var(--navy)"/><path fill="var(--off-white)" d="M7 10h2v7H7zm1-3a1.1 1.1 0 110 2.2A1.1 1.1 0 018 7zm4 3h1.9v1h.05A2.2 2.2 0 0116 9.9c2.1 0 2.5 1.4 2.5 3.2V17h-2v-3.5c0-.8 0-1.9-1.2-1.9s-1.3.9-1.3 1.8V17H12V10z"/></svg>
         Connect on LinkedIn
       </a>
       <a class="contact-btn ghost" href="assets/julio-gulias-resume.pdf" target="_blank" rel="noopener noreferrer">
@@ -1099,28 +1076,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Email Me
       </a>
-    </div>
-
-    <!-- Value strip -->
-    <div class="contact-values">
-      <div class="contact-value">
-        <div class="value-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-        </div>
-        <span class="value-text">Open to the right opportunity</span>
-      </div>
-      <div class="contact-value">
-        <div class="value-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        </div>
-        <span class="value-text">Collaboration that drives results</span>
-      </div>
-      <div class="contact-value">
-        <div class="value-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <span class="value-text">Focused on value, impact, and people</span>
-      </div>
     </div>
   </div>
 </section>
@@ -1136,17 +1091,21 @@
 </footer>
 
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  // Scroll reveal (progressive enhancement — only activates if this script runs)
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion) {
+    document.documentElement.classList.add('js-reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
 </script>
 <script>
   (function() {
