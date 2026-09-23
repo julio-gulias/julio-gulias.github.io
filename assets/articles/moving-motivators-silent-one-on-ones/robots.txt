@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://julio-gulias.github.io/sitemap.xml
